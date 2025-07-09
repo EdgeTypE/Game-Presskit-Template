@@ -1,5 +1,10 @@
 # 🎮 Modern Game Presskit Template
 
+<a href="https://game-presskit-template.pages.dev/" target="_blank">
+  <img src="https://img.shields.io/badge/Live%20Demo-Visit-blue?style=for-the-badge" alt="Live Demo">
+</a>
+
+
 A modern, responsive, and highly customizable presskit template for indie game developers. Built with Svelte and modular JSON-based content management. 
 
 This template is designed to showcase your game with a professional look, featuring a clean design, SEO optimization, and easy-to-use components. You can easily customize colors, content, and features to fit your game's branding. 

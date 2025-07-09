@@ -229,7 +229,8 @@
 
     <!-- Comments -->
     {#if gameData.config?.features?.comments}
-      <Comments />
+      <!-- <Comments /> -->
+       <!-- DISABLED DUE TO BUG -->
     {/if}
 
     <!-- Footer -->

@@ -23,7 +23,7 @@
     "gtag": ""
   },
   "features": {
-    "comments": true,
+    "comments": false,
     "socialShare": true,
     "downloadPressKit": true,
     "newsletter": false

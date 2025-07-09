@@ -1,0 +1,81 @@
+{
+  "enabled": true,
+  "supportedPlatforms": [
+    {
+      "name": "Windows",
+      "icon": "/assets/icons/windows.svg",
+      "available": true,
+      "minVersion": "Windows 10",
+      "architecture": ["x64"]
+    },
+    {
+      "name": "macOS",
+      "icon": "/assets/icons/macos.svg",
+      "available": true,
+      "minVersion": "macOS 10.15",
+      "architecture": ["Intel", "Apple Silicon"]
+    },
+    {
+      "name": "Linux",
+      "icon": "/assets/icons/linux.png",
+      "available": true,
+      "minVersion": "Ubuntu 18.04 LTS",
+      "architecture": ["x64"],
+      "distributions": ["Ubuntu", "SteamOS", "Arch Linux", "Fedora"]
+    },
+    {
+      "name": "Steam Deck",
+      "icon": "/assets/icons/steamdeck.svg",
+      "available": true,
+      "verified": true,
+      "performance": "Excellent",
+      "notes": "Fully optimized for Steam Deck with native controls"
+    }
+  ],
+  "upcomingPlatforms": [
+    {
+      "name": "PlayStation 6",
+      "icon": "/assets/icons/playstation.svg",
+      "available": false,
+      "releaseDate": "Q4 2025",
+      "status": "In Development"
+    },
+    {
+      "name": "Xbox 720",
+      "icon": "/assets/icons/xbox.svg",
+      "available": false,
+      "releaseDate": "Q3 2025",
+      "status": "Planned"
+    }
+  ],
+  "controllerSupport": [
+    {
+      "type": "Xbox Controller",
+      "nativeSupport": true,
+      "features": ["Adaptive Triggers"]
+    },
+    {
+      "type": "PlayStation Controller",
+      "nativeSupport": true,
+      "features": ["Haptic Feedback", "Motion Controls"]
+    },
+    {
+      "type": "Steam Controller",
+      "nativeSupport": true,
+      "features": ["Trackpad Support", "Gyro Controls"]
+    },
+    {
+      "type": "Generic Controllers",
+      "nativeSupport": true,
+      "features": ["Basic Support"]
+    }
+  ],
+  "accessibility": [
+    "Colorblind-friendly options",
+    "Subtitle support",
+    "Adjustable UI scaling",
+    "Custom key bindings",
+    "Audio cues for visual elements",
+    "Difficulty adjustment options"
+  ]
+}

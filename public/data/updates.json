@@ -1,0 +1,162 @@
+{
+  "enabled": true,
+  "currentVersion": "1.2.0",
+  "updates": [
+    {
+      "version": "1.2.0",
+      "releaseDate": "2024-12-01",
+      "title": "Winter Update",
+      "type": "major",
+      "highlights": [
+        "New Winter-themed area to explore",
+        "4 new achievements to unlock",
+        "Quality of life improvements",
+        "Performance optimizations"
+      ],
+      "changelog": {
+        "added": [
+          "New 'Frozen Peaks' area with 3 hours of additional content",
+          "Winter-themed enemies and challenges",
+          "Seasonal cosmetic items and decorations",
+          "New spell: Ice Shield ability",
+          "Photo mode for capturing beautiful moments"
+        ],
+        "improved": [
+          "Loading times reduced by 40%",
+          "Combat responsiveness enhanced",
+          "Audio mixing and soundtrack balance",
+          "UI accessibility options expanded",
+          "Save game reliability improved"
+        ],
+        "fixed": [
+          "Rare crash when transitioning between areas",
+          "Audio desync issues in cutscenes",
+          "Controller vibration not working on some devices",
+          "Achievement 'Spell Master' not unlocking properly",
+          "Various localization text corrections"
+        ]
+      },
+      "downloadSize": "850 MB"
+    },
+    {
+      "version": "1.1.5",
+      "releaseDate": "2024-10-15",
+      "title": "Quality of Life Update",
+      "type": "minor",
+      "highlights": [
+        "Improved save system",
+        "Bug fixes and optimizations",
+        "New accessibility options"
+      ],
+      "changelog": {
+        "added": [
+          "Auto-save frequency options",
+          "Colorblind accessibility improvements",
+          "Additional subtitle customization options"
+        ],
+        "improved": [
+          "Save game loading speed",
+          "Memory usage optimization",
+          "Battery life on Steam Deck"
+        ],
+        "fixed": [
+          "Progress tracking for certain achievements",
+          "Inventory sorting inconsistencies",
+          "Minor visual glitches in dialog system"
+        ]
+      },
+      "downloadSize": "125 MB"
+    },
+    {
+      "version": "1.1.0",
+      "releaseDate": "2024-08-20",
+      "title": "Community Update",
+      "type": "major",
+      "highlights": [
+        "New Game+ mode",
+        "Developer commentary track",
+        "Community-requested features"
+      ],
+      "changelog": {
+        "added": [
+          "New Game+ mode with enhanced difficulty",
+          "Developer commentary throughout the game",
+          "Photo mode with filters and frames",
+          "Additional language support (Turkish, Portuguese)",
+          "Steam Workshop integration for mods"
+        ],
+        "improved": [
+          "Character progression system",
+          "Inventory management interface",
+          "Performance on older hardware"
+        ],
+        "fixed": [
+          "Several progression-blocking bugs",
+          "Audio issues on specific hardware configurations",
+          "Localization improvements for existing languages"
+        ]
+      },
+      "downloadSize": "1.2 GB"
+    },
+    {
+      "version": "1.0.3",
+      "releaseDate": "2024-04-10",
+      "title": "Launch Stability Update",
+      "type": "patch",
+      "highlights": [
+        "Critical bug fixes",
+        "Performance improvements",
+        "Launch week issues resolved"
+      ],
+      "changelog": {
+        "fixed": [
+          "Game crashing on startup for some configurations",
+          "Save corruption in specific scenarios",
+          "Audio cutting out during boss fights",
+          "Achievement synchronization with Steam",
+          "Various localization issues"
+        ]
+      },
+      "downloadSize": "75 MB"
+    }
+  ],
+  "upcomingUpdates": [
+    {
+      "version": "1.3.0",
+      "estimatedRelease": "Q2 2025",
+      "title": "Summer Expansion",
+      "description": "A major content expansion featuring a new storyline, characters, and gameplay mechanics.",
+      "features": [
+        "5+ hours of new story content",
+        "New companion character",
+        "Crafting system overhaul",
+        "Additional difficulty modes",
+        "Cross-platform multiplayer (experimental)"
+      ],
+      "status": "In Development"
+    }
+  ],
+  "roadmap": {
+    "shortTerm": [
+      "Performance optimizations",
+      "Additional accessibility features",
+      "Community-requested quality of life improvements"
+    ],
+    "longTerm": [
+      "Sequel announcement",
+      "Console versions optimization",
+      "VR mode exploration",
+      "Modding tools release"
+    ]
+  },
+  "betaProgram": {
+    "enabled": true,
+    "description": "Join our beta program to test upcoming features and provide feedback.",
+    "signupUrl": "https://example.com/beta",
+    "requirements": [
+      "Own the base game",
+      "Active community participation",
+      "Willing to provide detailed feedback"
+    ]
+  }
+}

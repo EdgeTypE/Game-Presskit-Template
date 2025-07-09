@@ -1,0 +1,386 @@
+/* Hover Effects */
+
+/* Card Hover Effects */
+.hover-lift {
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(99, 102, 241, 0.1);
+}
+
+.hover-glow {
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.hover-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(99, 102, 241, 0.2),
+    rgba(139, 92, 246, 0.2)
+  );
+  border-radius: inherit;
+  opacity: 0;
+  z-index: -1;
+  filter: blur(20px);
+  transition: opacity var(--transition-normal);
+}
+
+.hover-glow:hover::before {
+  opacity: 1;
+}
+
+.hover-scale {
+  transition: transform var(--transition-normal);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-rotate {
+  transition: transform var(--transition-normal);
+}
+
+.hover-rotate:hover {
+  transform: rotate(5deg);
+}
+
+/* Button Hover Effects */
+.btn-magnetic {
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.btn-magnetic:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 10px 30px rgba(99, 102, 241, 0.3),
+    0 0 20px rgba(99, 102, 241, 0.2);
+}
+
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn-ripple::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-ripple:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.8s ease;
+}
+
+.btn-shine:hover::after {
+  left: 100%;
+}
+
+/* Image Hover Effects */
+.img-zoom {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.img-zoom img {
+  transition: transform var(--transition-slow);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-zoom:hover img {
+  transform: scale(1.1);
+}
+
+.img-overlay {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.img-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(99, 102, 241, 0.8),
+    rgba(139, 92, 246, 0.8)
+  );
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  z-index: 1;
+}
+
+.img-overlay:hover::before {
+  opacity: 1;
+}
+
+.img-overlay .overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.img-overlay:hover .overlay-content {
+  opacity: 1;
+}
+
+/* Text Hover Effects */
+.text-glow {
+  transition: all var(--transition-normal);
+}
+
+.text-glow:hover {
+  text-shadow: 
+    0 0 10px rgba(99, 102, 241, 0.5),
+    0 0 20px rgba(99, 102, 241, 0.3),
+    0 0 30px rgba(99, 102, 241, 0.1);
+}
+
+.text-gradient-hover {
+  background: linear-gradient(
+    90deg,
+    var(--text-primary),
+    var(--text-primary)
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: background-position var(--transition-normal);
+}
+
+.text-gradient-hover:hover {
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color),
+    var(--accent-color),
+    var(--primary-color)
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+}
+
+/* Link Hover Effects */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  transition: width var(--transition-normal);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+.link-bracket {
+  position: relative;
+  padding: 0 var(--spacing-sm);
+  transition: all var(--transition-normal);
+}
+
+.link-bracket::before,
+.link-bracket::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 100%;
+  border: 2px solid var(--primary-color);
+  transition: all var(--transition-normal);
+}
+
+.link-bracket::before {
+  left: 0;
+  border-right: none;
+}
+
+.link-bracket::after {
+  right: 0;
+  border-left: none;
+}
+
+.link-bracket:hover::before,
+.link-bracket:hover::after {
+  width: 20px;
+}
+
+/* Card Stack Effect */
+.card-stack {
+  position: relative;
+}
+
+.card-stack::before,
+.card-stack::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: all var(--transition-normal);
+}
+
+.card-stack::before {
+  transform: rotate(2deg) translateY(4px);
+}
+
+.card-stack::after {
+  transform: rotate(-1deg) translateY(2px);
+}
+
+.card-stack:hover::before,
+.card-stack:hover::after {
+  opacity: 0.6;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.hover-float:hover {
+  animation: float 2s ease-in-out infinite;
+}
+
+/* Pulse Effect */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.hover-pulse:hover {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+/* Shake Effect */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+  20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+.hover-shake:hover {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Performance optimizations for mobile */
+@media (max-width: 768px) {
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Disable heavy animations on mobile */
+  .btn-ripple::before,
+  .btn-shine::after {
+    display: none;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hover-lift,
+  .hover-scale,
+  .hover-rotate,
+  .btn-magnetic,
+  .img-zoom img,
+  .hover-float,
+  .hover-pulse,
+  .hover-shake {
+    transition: none;
+    animation: none;
+  }
+  
+  .hover-lift:hover,
+  .hover-scale:hover,
+  .hover-rotate:hover,
+  .btn-magnetic:hover {
+    transform: none;
+  }
+}

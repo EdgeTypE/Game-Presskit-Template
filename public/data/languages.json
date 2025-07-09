@@ -1,0 +1,72 @@
+{
+  "enabled": true,
+  "supportedLanguages": [
+    {
+      "code": "en",
+      "name": "English",
+      "nativeName": "English",
+      "fullAudio": true,
+      "subtitles": true,
+      "interface": true,
+      "flag": "🇺🇸"
+    },
+    {
+      "code": "tr",
+      "name": "Turkish",
+      "nativeName": "Türkçe",
+      "fullAudio": false,
+      "subtitles": true,
+      "interface": true,
+      "flag": "🇹🇷"
+    },
+    {
+      "code": "es",
+      "name": "Spanish",
+      "nativeName": "Español",
+      "fullAudio": true,
+      "subtitles": true,
+      "interface": true,
+      "flag": "🇪🇸"
+    },
+    {
+      "code": "fr",
+      "name": "French",
+      "nativeName": "Français",
+      "fullAudio": true,
+      "subtitles": true,
+      "interface": true,
+      "flag": "🇫🇷"
+    },
+    {
+      "code": "de",
+      "name": "German",
+      "nativeName": "Deutsch",
+      "fullAudio": true,
+      "subtitles": true,
+      "interface": true,
+      "flag": "🇩🇪"
+    },
+    {
+      "code": "it",
+      "name": "Italian",
+      "nativeName": "Italiano",
+      "fullAudio": false,
+      "subtitles": true,
+      "interface": true,
+      "flag": "🇮🇹"
+    }
+  ],
+  "localizationInfo": {
+    "textVolume": "~50,000 words",
+    "audioHours": "~8 hours (for full audio languages)",
+    "lastUpdated": "2025-07-08",
+    "translationQuality": "Professional translation with native speaker review"
+  },
+  "communityTranslations": {
+    "enabled": true,
+    "platform": "Crowdin",
+    "url": "https://crowdin.com/",
+    "contributorCount": 43,
+    "languages": ["nl", "sv", "no", "da", "pl", "cs", "hu"]
+  }
+}

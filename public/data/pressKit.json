@@ -1,0 +1,156 @@
+{
+  "enabled": true,
+  "pressKitInfo": {
+    "lastUpdated": "2024-01-15",
+    "version": "2.1",
+    "downloadUrl": "/assets/press/amazing-adventure-presskit.zip",
+    "size": "256 MB"
+  },
+  "factSheet": {
+    "developer": "Indie Game Studio",
+    "publisher": "Independent",
+    "releaseDate": "March 15, 2024",
+    "platforms": ["PC", "Mac", "Linux", "Steam Deck"],
+    "price": "$19.99 USD",
+    "genre": "Adventure, Indie, Fantasy",
+    "rating": "E10+ (Everyone 10 and older)",
+    "website": "https://example.com",
+    "contact": "press@example.com"
+  },
+  "downloadableAssets": {
+    "logos": [
+      {
+        "name": "Main Logo (PNG)",
+        "url": "/assets/press/logos/logo.png",
+        "size": "2048x512",
+        "fileSize": "125 KB"
+      },
+      {
+        "name": "Main Logo (SVG)",
+        "url": "/assets/press/logos/logo.svg",
+        "size": "Vector",
+        "fileSize": "15 KB"
+      },
+      {
+        "name": "Logo White (PNG)",
+        "url": "/assets/press/logos/logo-white.png",
+        "size": "2048x512",
+        "fileSize": "98 KB"
+      },
+      {
+        "name": "Icon Only (PNG)",
+        "url": "/assets/press/logos/icon.png",
+        "size": "512x512",
+        "fileSize": "45 KB"
+      }
+    ],
+    "screenshots": [
+      {
+        "name": "Screenshot Pack (High-Res)",
+        "url": "/assets/press/screenshots/screenshots-hires.zip",
+        "count": "15 screenshots",
+        "resolution": "3840x2160",
+        "fileSize": "45 MB"
+      },
+      {
+        "name": "Screenshot Pack (Standard)",
+        "url": "/assets/press/screenshots/screenshots-standard.zip",
+        "count": "15 screenshots",
+        "resolution": "1920x1080",
+        "fileSize": "12 MB"
+      }
+    ],
+    "videos": [
+      {
+        "name": "Launch Trailer (4K)",
+        "url": "/assets/press/videos/launch-trailer-4k.mp4",
+        "duration": "2:30",
+        "resolution": "3840x2160",
+        "fileSize": "890 MB"
+      },
+      {
+        "name": "Launch Trailer (1080p)",
+        "url": "/assets/press/videos/launch-trailer-1080p.mp4",
+        "duration": "2:30",
+        "resolution": "1920x1080",
+        "fileSize": "156 MB"
+      },
+      {
+        "name": "Gameplay Footage B-Roll",
+        "url": "/assets/press/videos/gameplay-broll.mp4",
+        "duration": "5:00",
+        "resolution": "1920x1080",
+        "fileSize": "425 MB"
+      }
+    ],
+    "artworks": [
+      {
+        "name": "Key Art Collection",
+        "url": "/assets/press/artwork/key-art.zip",
+        "count": "8 artworks",
+        "resolution": "4096x4096",
+        "fileSize": "125 MB"
+      },
+      {
+        "name": "Character Concept Art",
+        "url": "/assets/press/artwork/character-concepts.zip",
+        "count": "12 concepts",
+        "resolution": "2048x2048",
+        "fileSize": "78 MB"
+      },
+      {
+        "name": "Environment Art",
+        "url": "/assets/press/artwork/environment-art.zip",
+        "count": "10 artworks",
+        "resolution": "3840x2160",
+        "fileSize": "95 MB"
+      }
+    ],
+    "documents": [
+      {
+        "name": "Press Release",
+        "url": "/assets/press/documents/press-release.pdf",
+        "format": "PDF",
+        "fileSize": "2.1 MB"
+      },
+      {
+        "name": "Developer Bio & Credits",
+        "url": "/assets/press/documents/developer-bio.pdf",
+        "format": "PDF",
+        "fileSize": "1.8 MB"
+      },
+      {
+        "name": "Technical Specifications",
+        "url": "/assets/press/documents/tech-specs.pdf",
+        "format": "PDF",
+        "fileSize": "945 KB"
+      }
+    ]
+  },
+  "contactInformation": {
+    "general": {
+      "email": "press@example.com",
+      "phone": "+90 (555) 123-4567",
+      "timezone": "TRT (UTC-3)"
+    },
+    "marketing": {
+      "name": "John Doe",
+      "role": "Community Manager",
+      "email": "john@example.com",
+      "twitter": "@johndoe"
+    },
+    "developer": {
+      "name": "Çağrı Dürü",
+      "role": "Game Director",
+      "email": "edgetype@goygoyengine.com",
+      "linkedin": "linkedin.com/in/edgetype"
+    }
+  },
+  "reviewGuidelines": {
+    "embargo": "No embargo - coverage welcome anytime",
+    "reviewCopies": "Steam keys available upon request",
+    "streamingPolicy": "Full game streaming and monetization allowed",
+    "contentWarnings": "Mild fantasy violence, no gore",
+    "accessibility": "Full subtitle support, colorblind-friendly UI"
+  }
+}

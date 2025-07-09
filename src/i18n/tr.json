@@ -1,0 +1,158 @@
+{
+  "meta": {
+    "title": "Muhteşem Macera - Resmi Basın Kiti",
+    "description": "Indie oyunumuzun muhteşem dünyasını keşfedin. Basın materyalleri, ekran görüntüleri ve geliştirici bilgilerini edinin.",
+    "keywords": "indie oyun, macera, fantastik, basın kiti"
+  },
+  "navigation": {
+    "home": "Ana Sayfa",
+    "features": "Özellikler",
+    "media": "Medya",
+    "requirements": "Gereksinimler",
+    "reviews": "İncelemeler",
+    "team": "Ekip",
+    "press": "Basın Kiti",
+    "download": "İndir"
+  },
+  "hero": {
+    "playTrailer": "Fragmanı İzle",
+    "getGame": "Oyunu Edinin",
+    "availableOn": "Şurada Mevcut",
+    "comingSoon": "Yakında"
+  },
+  "sections": {
+    "overview": "Genel Bakış",
+    "features": "Özellikler",
+    "screenshots": "Ekran Görüntüleri",
+    "videos": "Videolar",
+    "systemRequirements": "Sistem Gereksinimleri",
+    "reviews": "İncelemeler ve Ödüller",
+    "team": "Geliştirici Ekibi",
+    "pressKit": "Basın Kiti",
+    "updates": "Güncellemeler",
+    "achievements": "Başarımlar",
+    "platforms": "Platformlar",
+    "languages": "Diller",
+    "social": "Topluluk"
+  },
+  "features": {
+    "mainFeatures": "Ana Özellikler",
+    "gameplayFeatures": "Oynanış Özellikleri",
+    "technicalFeatures": "Teknik Özellikler"
+  },
+  "requirements": {
+    "minimum": "Minimum",
+    "recommended": "Önerilen",
+    "ultra": "Ultra",
+    "os": "İşletim Sistemi",
+    "processor": "İşlemci",
+    "memory": "Bellek",
+    "graphics": "Grafik Kartı",
+    "directx": "DirectX",
+    "storage": "Depolama",
+    "soundCard": "Ses Kartı",
+    "notes": "Ek Notlar"
+  },
+  "reviews": {
+    "scores": "İnceleme Puanları",
+    "featuredReviews": "Öne Çıkan İncelemeler",
+    "awards": "Ödüller ve Tanınma",
+    "playerTestimonials": "Oyuncu Yorumları"
+  },
+  "team": {
+    "about": "Stüdyo Hakkında",
+    "teamMembers": "Ekip Üyeleri",
+    "specialThanks": "Özel Teşekkürler"
+  },
+  "pressKit": {
+    "downloadPressKit": "Basın Kitini İndir",
+    "factSheet": "Bilgi Sayfası",
+    "downloadableAssets": "İndirilebilir Materyaller",
+    "logos": "Logolar",
+    "screenshots": "Ekran Görüntüleri",
+    "videos": "Videolar",
+    "artworks": "Sanat Eserleri",
+    "documents": "Belgeler",
+    "contactInformation": "İletişim Bilgileri",
+    "reviewGuidelines": "İnceleme Kuralları"
+  },
+  "updates": {
+    "currentVersion": "Mevcut Sürüm",
+    "releaseNotes": "Sürüm Notları",
+    "changelog": "Değişiklik Listesi",
+    "added": "Eklenen",
+    "improved": "İyileştirilen",
+    "fixed": "Düzeltilen",
+    "upcomingUpdates": "Yaklaşan Güncellemeler",
+    "roadmap": "Yol Haritası",
+    "betaProgram": "Beta Programı"
+  },
+  "achievements": {
+    "totalAchievements": "Toplam Başarım",
+    "categories": "Kategoriler",
+    "rarity": "Nadirlik",
+    "points": "Puan",
+    "common": "Yaygın",
+    "uncommon": "Az Bulunur",
+    "rare": "Nadir",
+    "veryRare": "Çok Nadir",
+    "ultraRare": "Ultra Nadir"
+  },
+  "platforms": {
+    "supportedPlatforms": "Desteklenen Platformlar",
+    "upcomingPlatforms": "Yakında Gelecek",
+    "controllerSupport": "Kontrolcü Desteği",
+    "accessibility": "Erişilebilirlik Özellikleri"
+  },
+  "languages": {
+    "supportedLanguages": "Desteklenen Diller",
+    "fullAudio": "Tam Ses",
+    "subtitles": "Altyazı",
+    "interface": "Arayüz",
+    "communityTranslations": "Topluluk Çevirileri"
+  },
+  "social": {
+    "followUs": "Bizi Takip Edin",
+    "joinCommunity": "Topluluğumuza Katılın",
+    "fanContent": "Hayran İçerikleri",
+    "influencers": "İçerik Üreticileri",
+    "pressContact": "Basın İletişim"
+  },
+  "common": {
+    "loading": "Yükleniyor...",
+    "error": "Bir hata oluştu",
+    "tryAgain": "Tekrar Dene",
+    "close": "Kapat",
+    "download": "İndir",
+    "viewMore": "Daha Fazla Gör",
+    "viewLess": "Daha Az Gör",
+    "share": "Paylaş",
+    "copy": "Kopyala",
+    "copied": "Kopyalandı!",
+    "email": "E-posta",
+    "website": "Web Sitesi",
+    "date": "Tarih",
+    "size": "Boyut",
+    "duration": "Süre",
+    "resolution": "Çözünürlük",
+    "fileSize": "Dosya Boyutu",
+    "version": "Sürüm",
+    "status": "Durum",
+    "available": "Mevcut",
+    "comingSoon": "Yakında",
+    "inDevelopment": "Geliştiriliyor",
+    "planned": "Planlanıyor"
+  },
+  "comments": {
+    "title": "Yorumlar",
+    "addComment": "Yorum Ekle",
+    "username": "Kullanıcı Adı",
+    "commentText": "Yorumunuz",
+    "submit": "Gönder",
+    "reply": "Yanıtla",
+    "noComments": "Henüz yorum yok. İlk yorum yapan siz olun!",
+    "loading": "Yorumlar yükleniyor...",
+    "error": "Yorumlar yüklenemedi",
+    "success": "Yorum başarıyla eklendi!"
+  }
+}

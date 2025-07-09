@@ -1,0 +1,81 @@
+{
+  "enabled": true,
+  "mainFeatures": [
+    {
+      "title": "Immersive Storytelling",
+      "description": "Experience a captivating narrative with branching storylines and meaningful choices that impact the world around you.",
+      "icon": "/assets/icons/story.webp"
+    },
+    {
+      "title": "Dynamic Combat System",
+      "description": "Master a fluid combat system that combines melee attacks, magical abilities, and strategic thinking.",
+      "icon": "/assets/icons/combat.webp"
+    },
+    {
+      "title": "Open World Exploration",
+      "description": "Discover a vast world filled with hidden secrets, ancient ruins, and mystical creatures waiting to be found.",
+      "icon": "/assets/icons/exploration.webp"
+    },
+    {
+      "title": "Character Progression",
+      "description": "Customize your character with unique abilities, skills, and equipment as you progress through your adventure.",
+      "icon": "/assets/icons/progression.webp"
+    },
+    {
+      "title": "Stunning Visuals",
+      "description": "Hand-crafted environments and beautiful art style create a visually stunning gaming experience.",
+      "icon": "/assets/icons/visuals.webp"
+    },
+    {
+      "title": "Epic Soundtrack",
+      "description": "Immerse yourself in an orchestral soundtrack that perfectly complements every moment of your journey.",
+      "icon": "/assets/icons/music.webp"
+    }
+  ],
+  "gameplayFeatures": [
+    {
+      "category": "Combat",
+      "features": [
+        "Real-time combat with dodge and parry mechanics",
+        "15+ unique spells and magical abilities",
+        "Weapon crafting and enchantment system",
+        "Boss battles with unique mechanics"
+      ]
+    },
+    {
+      "category": "Exploration",
+      "features": [
+        "5 distinct biomes to explore",
+        "100+ hidden collectibles and secrets",
+        "Dynamic weather and day/night cycle",
+        "Fast travel system between discovered locations"
+      ]
+    },
+    {
+      "category": "Character",
+      "features": [
+        "Skill tree with 3 different paths",
+        "Equipment system with rare and legendary items",
+        "Character customization options",
+        "Companion system with AI allies"
+      ]
+    },
+    {
+      "category": "Story",
+      "features": [
+        "20+ hours of main story content",
+        "Multiple endings based on player choices",
+        "Side quests with meaningful rewards",
+        "Rich lore and world-building"
+      ]
+    }
+  ],
+  "technicalFeatures": [
+    "Cross-platform save support",
+    "Full controller support",
+    "Customizable key bindings",
+    "Accessibility options",
+    "Steam achievements and trading cards",
+    "Cloud save synchronization"
+  ]
+}

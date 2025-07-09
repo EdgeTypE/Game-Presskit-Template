@@ -1,0 +1,31 @@
+{
+  "enabled": true,
+  "theme": {
+    "primaryColor": "#6366f1",
+    "secondaryColor": "#8b5cf6",
+    "accentColor": "#06b6d4",
+    "mode": "dark"
+  },
+  "language": {
+    "default": "en",
+    "available": ["en", "tr"]
+  },
+  "seo": {
+    "title": "Amazing Game - Official Presskit",
+    "description": "Discover the amazing world of our indie game. Get press materials, screenshots, and developer information.",
+    "keywords": "indie game, adventure, fantasy, presskit",
+    "ogImage": "/assets/images/hero-bg.jpg",
+    "twitterImage": "/assets/images/hero-bg.jpg"
+  },
+  "analytics": {
+    "enabled": false,
+    "googleAnalytics": "",
+    "gtag": ""
+  },
+  "features": {
+    "comments": true,
+    "socialShare": true,
+    "downloadPressKit": true,
+    "newsletter": false
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "enabled": true,
+  "gameName": "Amazing Adventure",
+  "tagline": "Embark on an epic journey through mystical lands",
+  "shortDescription": "A captivating indie adventure game that combines stunning visuals with immersive storytelling.",
+  "longDescription": "Amazing Adventure is a breathtaking indie game that takes players on an unforgettable journey through mystical lands filled with ancient secrets and magical creatures. With hand-crafted environments, compelling characters, and an engaging storyline, this game offers hours of immersive gameplay that will keep you coming back for more.",
+  "genre": ["Adventure", "Indie", "Fantasy", "Single-player"],
+  "developer": "Indie Game Studio",
+  "publisher": "Independent",
+  "releaseDate": "2025-07-08",
+  "status": "released",
+  "price": {
+    "usd": 19.99,
+    "eur": 18.99,
+    "currency": "USD"
+  },
+  "ageRating": {
+    "esrb": "E10+",
+    "pegi": "7",
+    "content": ["Fantasy Violence", "Bad Language"]
+  },
+  "version": "1.2.0",
+  "lastUpdated": "2025-07-11",
+  "website": "https://gaming-db.com",
+  "trailer": "/assets/videos/trailer.mp4",
+  "logo": "/assets/images/logo.png",
+  "heroImage": "/assets/images/hero-bg.jpg",
+  "icon": "/assets/images/game-icon.png"
+}

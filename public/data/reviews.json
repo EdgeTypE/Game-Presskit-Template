@@ -1,0 +1,93 @@
+{
+  "enabled": true,
+  "scores": [
+    {
+      "name": "Metacritic",
+      "score": 87,
+      "maxScore": 100,
+      "url": "https://metacritic.com/",
+      "reviewCount": 45,
+      "type": "critic"
+    },
+    {
+      "name": "Steam",
+      "score": 94,
+      "scoreText": "Very Positive",
+      "url": "https://store.steampowered.com/",
+      "reviewCount": 2847,
+      "type": "user"
+    },
+    {
+      "name": "GDB",
+      "score": 8.5,
+      "maxScore": 10,
+      "url": "https://gaming-db.com/",
+      "type": "critic"
+    },
+    {
+      "name": "Goygoy Engine",
+      "score": 8,
+      "maxScore": 10,
+      "url": "https://goygoyengine.com/",
+      "type": "critic"
+    }
+  ],
+  "featuredReviews": [
+    {
+      "publication": "Gaming-DB",
+      "score": "8.5/10",
+      "quote": "Amazing Adventure delivers a compelling narrative experience with beautiful visuals and engaging gameplay that will keep you hooked from start to finish.",
+      "reviewer": "John Doe",
+      "url": "https://gaming-db.com/",
+      "logo": "https://gaming-db.com/assets/goygoyenginekare.png"
+    },
+    {
+      "publication": "Goygoy Engine",
+      "score": "8/10",
+      "quote": "A masterfully crafted indie adventure that proves you don't need a massive budget to create something truly special.",
+      "reviewer": "EdgeTypE",
+      "url": "https://goygoyengine.com/",
+      "logo": "https://goygoyengine.com/assets/goygoyenginekare.png"
+    }
+  ],
+  "awards": [
+    {
+      "name": "The Game Awards - Best Indie Game",
+      "year": "2034",
+      "organization": "Independent Games Festival",
+      "image": "/assets/images/game-icon.png"
+    },
+    {
+      "name": "GDB Awards - Best Narrative",
+      "year": "2025",
+      "organization": "GDB",
+      "image": "/assets/images/game-icon.png"
+    },
+    {
+      "name": "Steam Awards - Outstanding Visual Style",
+      "year": "2030",
+      "organization": "Steam",
+      "image": "/assets/images/game-icon.png"
+    }
+  ],
+  "playerTestimonials": [
+    {
+      "quote": "This game absolutely blew me away. The story, the visuals, the music - everything comes together perfectly.",
+      "author": "Efxlve",
+      "platform": "Steam",
+      "hours": 42
+    },
+    {
+      "quote": "One of the most beautiful indie games I've ever played. Can't wait for the sequel!",
+      "author": "EdgeTypE",
+      "platform": "Steam",
+      "hours": 38
+    },
+    {
+      "quote": "Perfect blend of storytelling and gameplay. This is what indie gaming is all about.",
+      "author": "kurmayceliker",
+      "platform": "Xbox",
+      "hours": 55
+    }
+  ]
+}

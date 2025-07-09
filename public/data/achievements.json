@@ -1,0 +1,178 @@
+{
+  "enabled": false,
+  "totalAchievements": 42,
+  "categories": [
+    {
+      "name": "Story Progress",
+      "achievements": [
+        {
+          "id": "first_steps",
+          "name": "First Steps",
+          "description": "Begin your adventure",
+          "icon": "/assets/icons/achievements/first-steps.png",
+          "rarity": "Common",
+          "percentage": 98.5,
+          "points": 10
+        },
+        {
+          "id": "chapter_1",
+          "name": "The Journey Begins",
+          "description": "Complete Chapter 1",
+          "icon": "/assets/icons/achievements/chapter-1.png",
+          "rarity": "Common",
+          "percentage": 87.2,
+          "points": 15
+        },
+        {
+          "id": "halfway_there",
+          "name": "Halfway There",
+          "description": "Reach the midpoint of your journey",
+          "icon": "/assets/icons/achievements/halfway.png",
+          "rarity": "Uncommon",
+          "percentage": 65.8,
+          "points": 25
+        },
+        {
+          "id": "final_chapter",
+          "name": "The Final Chapter",
+          "description": "Begin the final act",
+          "icon": "/assets/icons/achievements/final-chapter.png",
+          "rarity": "Uncommon",
+          "percentage": 42.1,
+          "points": 30
+        },
+        {
+          "id": "true_ending",
+          "name": "True Hero",
+          "description": "Achieve the true ending",
+          "icon": "/assets/icons/achievements/true-hero.png",
+          "rarity": "Rare",
+          "percentage": 28.7,
+          "points": 50
+        }
+      ]
+    },
+    {
+      "name": "Combat & Skills",
+      "achievements": [
+        {
+          "id": "first_victory",
+          "name": "First Victory",
+          "description": "Win your first battle",
+          "icon": "/assets/icons/achievements/first-victory.png",
+          "rarity": "Common",
+          "percentage": 95.3,
+          "points": 10
+        },
+        {
+          "id": "spell_master",
+          "name": "Spell Master",
+          "description": "Learn all magical abilities",
+          "icon": "/assets/icons/achievements/spell-master.png",
+          "rarity": "Uncommon",
+          "percentage": 35.6,
+          "points": 30
+        },
+        {
+          "id": "boss_slayer",
+          "name": "Boss Slayer",
+          "description": "Defeat all major bosses",
+          "icon": "/assets/icons/achievements/boss-slayer.png",
+          "rarity": "Rare",
+          "percentage": 24.1,
+          "points": 40
+        },
+        {
+          "id": "flawless_victory",
+          "name": "Flawless Victory",
+          "description": "Complete a boss fight without taking damage",
+          "icon": "/assets/icons/achievements/flawless.png",
+          "rarity": "Very Rare",
+          "percentage": 8.9,
+          "points": 75
+        }
+      ]
+    },
+    {
+      "name": "Exploration",
+      "achievements": [
+        {
+          "id": "explorer",
+          "name": "Explorer",
+          "description": "Discover 50% of all locations",
+          "icon": "/assets/icons/achievements/explorer.png",
+          "rarity": "Common",
+          "percentage": 68.4,
+          "points": 20
+        },
+        {
+          "id": "treasure_hunter",
+          "name": "Treasure Hunter",
+          "description": "Find 25 hidden treasures",
+          "icon": "/assets/icons/achievements/treasure-hunter.png",
+          "rarity": "Uncommon",
+          "percentage": 41.7,
+          "points": 25
+        },
+        {
+          "id": "completionist",
+          "name": "Completionist",
+          "description": "Discover 100% of all secrets",
+          "icon": "/assets/icons/achievements/completionist.png",
+          "rarity": "Ultra Rare",
+          "percentage": 3.2,
+          "points": 100
+        }
+      ]
+    },
+    {
+      "name": "Special",
+      "achievements": [
+        {
+          "id": "speed_runner",
+          "name": "Speed Runner",
+          "description": "Complete the game in under 6 hours",
+          "icon": "/assets/icons/achievements/speed-runner.png",
+          "rarity": "Ultra Rare",
+          "percentage": 1.8,
+          "points": 100
+        },
+        {
+          "id": "pacifist",
+          "name": "Pacifist",
+          "description": "Complete the game with minimal combat",
+          "icon": "/assets/icons/achievements/pacifist.png",
+          "rarity": "Very Rare",
+          "percentage": 5.4,
+          "points": 75
+        },
+        {
+          "id": "collector",
+          "name": "Collector",
+          "description": "Collect all rare items",
+          "icon": "/assets/icons/achievements/collector.png",
+          "rarity": "Rare",
+          "percentage": 15.9,
+          "points": 50
+        }
+      ]
+    }
+  ],
+  "steamIntegration": {
+    "enabled": true,
+    "tradingCards": 8,
+    "badges": 5,
+    "emoticons": 12,
+    "backgrounds": 6
+  },
+  "rewardSystem": {
+    "totalPoints": 1000,
+    "unlockables": [
+      "Concept Art Gallery",
+      "Developer Commentary",
+      "Soundtrack Player",
+      "Character Skins",
+      "New Game+ Mode"
+    ]
+  }
+}

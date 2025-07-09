@@ -1,0 +1,158 @@
+{
+  "meta": {
+    "title": "Amazing Adventure - Official Presskit",
+    "description": "Discover the amazing world of our indie game. Get press materials, screenshots, and developer information.",
+    "keywords": "indie game, adventure, fantasy, presskit"
+  },
+  "navigation": {
+    "home": "Home",
+    "features": "Features",
+    "media": "Media",
+    "requirements": "Requirements",
+    "reviews": "Reviews",
+    "team": "Team",
+    "press": "Press Kit",
+    "download": "Download"
+  },
+  "hero": {
+    "playTrailer": "Play Trailer",
+    "getGame": "Get the Game",
+    "availableOn": "Available on",
+    "comingSoon": "Coming Soon"
+  },
+  "sections": {
+    "overview": "Overview",
+    "features": "Features",
+    "screenshots": "Screenshots",
+    "videos": "Videos",
+    "systemRequirements": "System Requirements",
+    "reviews": "Reviews & Awards",
+    "team": "Development Team",
+    "pressKit": "Press Kit",
+    "updates": "Updates",
+    "achievements": "Achievements",
+    "platforms": "Platforms",
+    "languages": "Languages",
+    "social": "Community"
+  },
+  "features": {
+    "mainFeatures": "Key Features",
+    "gameplayFeatures": "Gameplay Features",
+    "technicalFeatures": "Technical Features"
+  },
+  "requirements": {
+    "minimum": "Minimum",
+    "recommended": "Recommended",
+    "ultra": "Ultra",
+    "os": "Operating System",
+    "processor": "Processor",
+    "memory": "Memory",
+    "graphics": "Graphics",
+    "directx": "DirectX",
+    "storage": "Storage",
+    "soundCard": "Sound Card",
+    "notes": "Additional Notes"
+  },
+  "reviews": {
+    "scores": "Review Scores",
+    "featuredReviews": "Featured Reviews",
+    "awards": "Awards & Recognition",
+    "playerTestimonials": "Player Testimonials"
+  },
+  "team": {
+    "about": "About the Studio",
+    "teamMembers": "Team Members",
+    "specialThanks": "Special Thanks"
+  },
+  "pressKit": {
+    "downloadPressKit": "Download Press Kit",
+    "factSheet": "Fact Sheet",
+    "downloadableAssets": "Downloadable Assets",
+    "logos": "Logos",
+    "screenshots": "Screenshots",
+    "videos": "Videos",
+    "artworks": "Artworks",
+    "documents": "Documents",
+    "contactInformation": "Contact Information",
+    "reviewGuidelines": "Review Guidelines"
+  },
+  "updates": {
+    "currentVersion": "Current Version",
+    "releaseNotes": "Release Notes",
+    "changelog": "Changelog",
+    "added": "Added",
+    "improved": "Improved",
+    "fixed": "Fixed",
+    "upcomingUpdates": "Upcoming Updates",
+    "roadmap": "Roadmap",
+    "betaProgram": "Beta Program"
+  },
+  "achievements": {
+    "totalAchievements": "Total Achievements",
+    "categories": "Categories",
+    "rarity": "Rarity",
+    "points": "Points",
+    "common": "Common",
+    "uncommon": "Uncommon",
+    "rare": "Rare",
+    "veryRare": "Very Rare",
+    "ultraRare": "Ultra Rare"
+  },
+  "platforms": {
+    "supportedPlatforms": "Supported Platforms",
+    "upcomingPlatforms": "Coming Soon",
+    "controllerSupport": "Controller Support",
+    "accessibility": "Accessibility Features"
+  },
+  "languages": {
+    "supportedLanguages": "Supported Languages",
+    "fullAudio": "Full Audio",
+    "subtitles": "Subtitles",
+    "interface": "Interface",
+    "communityTranslations": "Community Translations"
+  },
+  "social": {
+    "followUs": "Follow Us",
+    "joinCommunity": "Join Our Community",
+    "fanContent": "Fan Content",
+    "influencers": "Content Creators",
+    "pressContact": "Press Contact"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "tryAgain": "Try Again",
+    "close": "Close",
+    "download": "Download",
+    "viewMore": "View More",
+    "viewLess": "View Less",
+    "share": "Share",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "email": "Email",
+    "website": "Website",
+    "date": "Date",
+    "size": "Size",
+    "duration": "Duration",
+    "resolution": "Resolution",
+    "fileSize": "File Size",
+    "version": "Version",
+    "status": "Status",
+    "available": "Available",
+    "comingSoon": "Coming Soon",
+    "inDevelopment": "In Development",
+    "planned": "Planned"
+  },
+  "comments": {
+    "title": "Comments",
+    "addComment": "Add Comment",
+    "username": "Username",
+    "commentText": "Your comment",
+    "submit": "Submit",
+    "reply": "Reply",
+    "noComments": "No comments yet. Be the first to comment!",
+    "loading": "Loading comments...",
+    "error": "Failed to load comments",
+    "success": "Comment added successfully!"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "enabled": true,
+  "stores": [
+    {
+      "name": "Steam",
+      "url": "https://store.steampowered.com/",
+      "price": "$19.99",
+      "currency": "USD",
+      "available": true,
+      "icon": "/assets/icons/steam.svg",
+      "primaryButton": true
+    },
+    {
+      "name": "Epic Games Store",
+      "url": "https://store.epicgames.com/",
+      "price": "$19.99",
+      "currency": "USD",
+      "available": true,
+      "icon": "/assets/icons/epic.svg",
+      "primaryButton": false
+    },
+    {
+      "name": "GOG",
+      "url": "https://www.gog.com/game/",
+      "price": "$19.99",
+      "currency": "USD",
+      "available": true,
+      "icon": "/assets/icons/gog.png",
+      "primaryButton": false
+    },
+    {
+      "name": "Xbox",
+      "url": "https://www.microsoft.com/",
+      "price": "$19.99",
+      "currency": "USD",
+      "available": true,
+      "icon": "/assets/icons/xbox.svg",
+      "primaryButton": false,
+      "comingSoon": false
+    },
+    {
+      "name": "PlayStation",
+      "url": "https://playstation.com/",
+      "price": "$19.99",
+      "currency": "USD",
+      "available": false,
+      "icon": "/assets/icons/playstation.svg",
+      "primaryButton": false,
+      "comingSoon": true
+    }
+  ],
+  "preOrder": {
+    "enabled": false,
+    "discount": 10,
+    "endDate": "2026-03-29"
+  },
+  "bundles": [
+    {
+      "name": "Deluxe Edition",
+      "price": "$29.99",
+      "includes": ["Base Game", "Digital Soundtrack", "Art Book", "Exclusive Wallpapers"],
+      "available": true
+    }
+  ]
+}

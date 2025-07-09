@@ -1,0 +1,61 @@
+{
+  "enabled": true,
+  "screenshots": [
+    {
+      "url": "/assets/images/screenshots/screenshot1.jpg",
+      "thumbnail": "/assets/images/screenshots/screenshot1.jpg",
+      "caption": "Explore mystical forests filled with ancient magic",
+      "alt": "Player character exploring a magical forest environment"
+    },
+    {
+      "url": "/assets/images/screenshots/screenshot2.jpg",
+      "thumbnail": "/assets/images/screenshots/screenshot2.jpg",
+      "caption": "Epic boss battles await brave adventurers",
+      "alt": "Intense boss battle scene with magical effects"
+    },
+    {
+      "url": "/assets/images/screenshots/screenshot3.jpg",
+      "thumbnail": "/assets/images/screenshots/screenshot3.jpg",
+      "caption": "Discover hidden treasures in ancient ruins",
+      "alt": "Character discovering treasure in mysterious ruins"
+    },
+    {
+      "url": "/assets/images/screenshots/screenshot4.jpg",
+      "thumbnail": "/assets/images/screenshots/screenshot4.jpg",
+      "caption": "Master powerful spells and abilities",
+      "alt": "Character casting magical spells with visual effects"
+    },
+    {
+      "url": "/assets/images/screenshots/screenshot5.jpg",
+      "thumbnail": "/assets/images/screenshots/screenshot5.jpg",
+      "caption": "Journey through diverse and beautiful landscapes",
+      "alt": "Panoramic view of game's diverse environments"
+    }
+  ],
+  "videos": [
+    {
+      "title": "Official Launch Trailer",
+      "url": "/assets/videos/trailer.mp4",
+      "thumbnail": "/assets/images/hero-bg.jpg",
+      "duration": "2:30",
+      "type": "trailer",
+      "featured": true
+    },
+    {
+      "title": "Gameplay Overview",
+      "url": "/assets/videos/trailer.mp4",
+      "thumbnail": "/assets/images/hero-bg.jpg",
+      "duration": "5:45",
+      "type": "gameplay",
+      "featured": false
+    },
+    {
+      "title": "Developer Commentary",
+      "url": "/assets/videos/trailer.mp4",
+      "thumbnail": "/assets/images/hero-bg.jpg",
+      "duration": "12:15",
+      "type": "developer",
+      "featured": false
+    }
+  ]
+}

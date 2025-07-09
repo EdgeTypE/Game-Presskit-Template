@@ -1,0 +1,38 @@
+{
+  "enabled": true,
+  "minimum": {
+    "os": "Windows 10 64-bit",
+    "processor": "Intel Core i3-4130 / AMD FX-6300",
+    "memory": "4 GB RAM",
+    "graphics": "NVIDIA GeForce GTX 750 Ti / AMD Radeon R7 260X",
+    "directx": "Version 11",
+    "storage": "8 GB available space",
+    "soundCard": "DirectX compatible",
+    "notes": "Minimum requirements for 1080p at 30fps on Low settings"
+  },
+  "recommended": {
+    "os": "Windows 11 64-bit",
+    "processor": "Intel Core i5-8400 / AMD Ryzen 5 2600",
+    "memory": "8 GB RAM",
+    "graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 580",
+    "directx": "Version 12",
+    "storage": "12 GB available space (SSD recommended)",
+    "soundCard": "DirectX compatible",
+    "notes": "Recommended for 1080p at 60fps on High settings"
+  },
+  "ultra": {
+    "os": "Windows 11 64-bit",
+    "processor": "Intel Core i7-10700K / AMD Ryzen 7 3700X",
+    "memory": "16 GB RAM",
+    "graphics": "NVIDIA GeForce RTX 3070 / AMD Radeon RX 6700 XT",
+    "directx": "Version 12",
+    "storage": "15 GB available space (NVMe SSD recommended)",
+    "soundCard": "High-quality audio device recommended",
+    "notes": "For 1440p at 60fps or 1080p at 120fps on Ultra settings"
+  },
+  "additionalNotes": [
+    "Internet connection required for initial activation",
+    "Controller support: Xbox, PlayStation, and generic controllers",
+    "VR support: Not available"
+  ]
+}

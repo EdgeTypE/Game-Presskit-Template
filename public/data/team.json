@@ -1,0 +1,51 @@
+{
+  "enabled": true,
+  "studio": {
+    "name": "Indie Game Studio",
+    "founded": "2020",
+    "location": "Turkey",
+    "size": "12 developers",
+    "description": "We are a passionate team of indie developers dedicated to creating immersive gaming experiences that tell meaningful stories.",
+    "website": "https://example.com",
+    "logo": "/assets/images/game-icon.png"
+  },
+  "teamMembers": [
+    {
+      "name": "Çağrı Dürü",
+      "role": "Game Director & Lead Designer",
+      "bio": "With over 10 years in game development, Çağrı has led multiple successful indie projects. His vision for 'Amazing Adventure' combines innovative gameplay with a rich narrative.",
+      "avatar": "https://media.licdn.com/dms/image/v2/D4D03AQF_8C5r7aQNug/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1707666017652?e=1757548800&v=beta&t=JmkAjPBiG8JEqLnN8UD5dtZmS_5G1OiARQ2_p_sTILQ",
+      "social": {
+        "twitter": "https://twitter.com/edgetype",
+        "linkedin": "https://linkedin.com/in/edgetype"
+      }
+    },
+    {
+      "name": "John Doe",
+      "role": "Lead Programmer",
+      "bio": "John has been coding since he was 12. His expertise in game engines and AI has been crucial to the development of 'Amazing Adventure'.",
+      "avatar": "https://pbs.twimg.com/profile_images/1754979104632209408/502affCJ_400x400.jpg",
+      "social": {
+        "twitter": "https://twitter.com/edgetype",
+        "linkedin": "https://linkedin.com/in/edgetype"
+      }
+    },
+    {
+      "name": "Edige Tigin",
+      "role": "Art Director",
+      "bio": "Edige's artistic vision and attention to detail have shaped the stunning visuals of 'Amazing Adventure'. She has a background in both traditional and digital art.",
+      "avatar": "https://pbs.twimg.com/profile_images/1439127490597986308/vUMRFRnw_400x400.jpg",
+      "social": {
+        "twitter": "https://twitter.com/edgetype",
+        "linkedin": "https://linkedin.com/in/edgetype"
+      }
+    }
+
+  ],
+  "specialThanks": [
+    "Our amazing beta testers",
+    "The indie game development community",
+    "All the players who supported us",
+    "Coffee shops that kept us caffeinated"
+  ]
+}

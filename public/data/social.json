@@ -1,0 +1,75 @@
+{
+  "enabled": true,
+  "socialLinks": [
+    {
+      "platform": "Twitter",
+      "handle": "@goygoyengine",
+      "url": "https://twitter.com/goygoyengine",
+      "icon": "/assets/icons/twitter.svg",
+      "followers": "1.2K",
+      "description": "Latest news, updates, and behind-the-scenes content"
+    },
+    {
+      "platform": "Discord",
+      "name": "Amazing Adventure Community",
+      "url": "https://discord.gg/GEDFKN2aEQ",
+      "icon": "/assets/icons/discord.svg",
+      "members": "8.2K",
+      "description": "Join our community for discussions, support, and events"
+    }
+  ],
+  "communityContent": {
+    "fanArt": {
+      "enabled": false,
+      "hashtag": "#AmazingAdventureFanArt",
+      "featured": [
+        {
+          "artist": "@pyrousred",
+          "url": "https://www.reddit.com/r/Crysis/comments/1ltdd66/crysis_2_fanart/",
+          "image": "/assets/images/community/fanart1.jpg",
+          "description": "nanosuit crysis 2 fanart"
+        }
+      ]
+    },
+    "screenshots": {
+      "enabled": false,
+      "hashtag": "#AmazingAdventureScreenshots",
+      "photoMode": true
+    },
+    "videos": {
+      "enabled": false,
+      "hashtag": "#AmazingAdventureGameplay",
+      "streamingAllowed": true,
+      "monetizationAllowed": true
+    }
+  },
+  "influencers": [
+    {
+      "name": "Channel 1",
+      "platform": "YouTube",
+      "subscribers": "2.1M",
+      "coverage": "Full Review",
+      "url": "https://youtube.com/"
+    },
+    {
+      "name": "Streamer 1",
+      "platform": "Twitch",
+      "followers": "450K",
+      "coverage": "Live Playthrough",
+      "url": "https://twitch.tv/"
+    },
+    {
+      "name": "Channel 2",
+      "platform": "YouTube",
+      "subscribers": "890K",
+      "coverage": "Retrospective Analysis",
+      "url": "https://youtube.com/"
+    }
+  ],
+  "pressContact": {
+    "email": "press@example.com",
+    "mediaKit": "/assets/press/amazing-adventure-presskit.zip",
+    "responseTime": "24-48 hours",
+    "preferredContact": "Email"
+  }
+}

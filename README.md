@@ -154,7 +154,7 @@ Integrated with GDB Easy Comment system:
 
 ## 📝 License
 
-MIT License - feel free to use for commercial and personal projects.
+MIT License - feel free to use for commercial and personal projects with your assets.
 
 ## 🤝 Contributing
 

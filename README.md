@@ -1,8 +1,8 @@
 # 🎮 Modern Game Presskit Template
 
-<a href="https://game-presskit-template.pages.dev/" target="_blank">
-  <img src="https://img.shields.io/badge/Live%20Demo-Visit-blue?style=for-the-badge" alt="Live Demo">
-</a>
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit-blue?style=for-the-badge)](https://game-presskit-template.pages.dev/) [![Use this template](https://img.shields.io/badge/-Use%20this%20Template-181717?style=for-the-badge&logo=GitHub)](https://github.com/EdgeTypE/Game-Presskit-Template/generate) [![Deploy with Vercel](https://img.shields.io/badge/-Deploy%20with%20Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FEdgeTypE%2FGame-Presskit-Template) [![Deploy to Netlify](https://img.shields.io/badge/-Deploy%20to%20Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2FEdgeTypE%2FGame-Presskit-Template)
+
+
 
 
 A modern, responsive, and highly customizable presskit template for indie game developers. Built with Svelte and modular JSON-based content management. 

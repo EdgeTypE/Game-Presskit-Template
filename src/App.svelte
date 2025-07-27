@@ -1,50 +1,31 @@
 <script>
   import { onMount } from 'svelte';
-  import { initializeI18n, t } from './i18n/index.js';
-  import { loadGameData } from './utils/dataLoader.js';
-  import { themeManager } from './utils/themeManager.js';
+  import { router } from './utils/router.js';
+  import { blogPosts } from './data/blogPosts.js';
   
-  // Components
-  import Hero from './components/sections/Hero.svelte';
-  import GameInfo from './components/sections/GameInfo.svelte';
-  import Features from './components/sections/Features.svelte';
-  import Screenshots from './components/sections/Screenshots.svelte';
-  import Videos from './components/sections/Videos.svelte';
-  import Requirements from './components/sections/Requirements.svelte';
-  import Reviews from './components/sections/Reviews.svelte';
-  import Team from './components/sections/Team.svelte';
-  import PressKit from './components/sections/PressKit.svelte';
-  import StoreLinks from './components/sections/StoreLinks.svelte';
-  import Achievements from './components/sections/Achievements.svelte';
-  import Platforms from './components/sections/Platforms.svelte';
-  import Languages from './components/sections/Languages.svelte';
-  import Updates from './components/sections/Updates.svelte';
-  import Social from './components/sections/Social.svelte';
-  import Comments from './components/sections/Comments.svelte';
+  // CV Components
+  import CVHero from './components/sections/CVHero.svelte';
+  import Projects from './components/sections/Projects.svelte';
   import Footer from './components/sections/Footer.svelte';
   import Loading from './components/ui/Loading.svelte';
+  import BlogPage from './components/pages/BlogPage.svelte';
+  import BlogPostPage from './components/pages/BlogPostPage.svelte';
 
   // State
-  let gameData = {};
   let loading = true;
   let error = null;
+  let currentRoute = '/';
+  let currentPost = null;
 
   // Initialize app
   onMount(async () => {
     try {
-      // Initialize internationalization
-      initializeI18n();
+      // CV sitesi için basit başlatma
+      updatePageMeta();
       
-      // Load all game data
-      gameData = await loadGameData();
-      
-      // Apply theme from config
-      if (gameData.config && gameData.config.enabled) {
-        themeManager.applyTheme(gameData.config);
-        
-        // Update page title and meta
-        updatePageMeta(gameData);
-      }
+      // Router setup
+      router.onRouteChange = handleRouteChange;
+      handleRouteChange(router.getCurrentRoute());
       
       loading = false;
     } catch (err) {
@@ -54,70 +35,114 @@
     }
   });
 
-  // Update page metadata
-  function updatePageMeta(data) {
-    if (data.config?.seo) {
-      const seo = data.config.seo;
-      document.title = seo.title || 'Game Presskit';
-      
-      // Update meta description
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) {
-        metaDesc.setAttribute('content', seo.description);
-      }
-      
-      // Update OG tags
-      const ogTitle = document.querySelector('meta[property="og:title"]');
-      const ogDesc = document.querySelector('meta[property="og:description"]');
-      const ogImage = document.querySelector('meta[property="og:image"]');
-      
-      if (ogTitle) ogTitle.setAttribute('content', seo.title);
-      if (ogDesc) ogDesc.setAttribute('content', seo.description);
-      if (ogImage && seo.ogImage) ogImage.setAttribute('content', seo.ogImage);
-      
-      // Update Twitter tags
-      const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-      const twitterDesc = document.querySelector('meta[name="twitter:description"]');
-      const twitterImage = document.querySelector('meta[name="twitter:image"]');
-      
-      if (twitterTitle) twitterTitle.setAttribute('content', seo.title);
-      if (twitterDesc) twitterDesc.setAttribute('content', seo.description);
-      if (twitterImage && seo.twitterImage) twitterImage.setAttribute('content', seo.twitterImage);
+  // Route değişikliği işleme
+  function handleRouteChange(path) {
+    currentRoute = path;
+    currentPost = null;
+    
+    // Blog post route kontrolü
+    if (path.startsWith('/blog/')) {
+      const postId = path.substring(6); // '/blog/' sonrası
+      currentPost = blogPosts.find(post => post.id === postId);
     }
     
-    if (data.metadata?.enabled) {
-      // Add JSON-LD structured data
-      addJsonLd(data.metadata);
+    // Sayfa başlığını güncelle
+    updatePageTitle();
+  }
+
+  // Sayfa başlığını güncelle
+  function updatePageTitle() {
+    if (currentRoute === '/') {
+      document.title = 'Çağrı Dürü - Game Designer & Developer';
+    } else if (currentRoute === '/blog') {
+      document.title = 'Blog - Çağrı Dürü';
+    } else if (currentRoute.startsWith('/blog/') && currentPost) {
+      document.title = `${currentPost.title} - Çağrı Dürü`;
+    } else {
+      document.title = 'Çağrı Dürü - Game Designer & Developer';
     }
   }
 
-  // Add JSON-LD structured data for SEO
-  function addJsonLd(metadata) {
+  // Update page metadata for CV site
+  function updatePageMeta() {
+    document.title = 'Çağrı Dürü - Game Designer & Developer';
+    
+    // Update meta description
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Çağrı Dürü - Game Designer, Unreal Engine Developer. CV, projeler ve blog yazıları.');
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = 'Çağrı Dürü - Game Designer, Unreal Engine Developer. CV, projeler ve blog yazıları.';
+      document.head.appendChild(meta);
+    }
+    
+    // Update OG tags
+    updateOrCreateMetaTag('property', 'og:title', 'Çağrı Dürü - Game Designer & Developer');
+    updateOrCreateMetaTag('property', 'og:description', 'Game Designer ve Developer. Unreal Engine uzmanı.');
+    updateOrCreateMetaTag('property', 'og:type', 'website');
+    updateOrCreateMetaTag('property', 'og:url', window.location.href);
+    
+    // Update Twitter tags
+    updateOrCreateMetaTag('name', 'twitter:card', 'summary_large_image');
+    updateOrCreateMetaTag('name', 'twitter:title', 'Çağrı Dürü - Game Designer & Developer');
+    updateOrCreateMetaTag('name', 'twitter:description', 'Game Designer ve Developer. Unreal Engine uzmanı.');
+    updateOrCreateMetaTag('name', 'twitter:creator', '@edgetype');
+    
+    // Add JSON-LD structured data for personal website
+    addJsonLd();
+  }
+
+  function updateOrCreateMetaTag(attribute, value, content) {
+    let tag = document.querySelector(`meta[${attribute}="${value}"]`);
+    if (tag) {
+      tag.setAttribute('content', content);
+    } else {
+      tag = document.createElement('meta');
+      tag.setAttribute(attribute, value);
+      tag.setAttribute('content', content);
+      document.head.appendChild(tag);
+    }
+  }
+
+  // Add JSON-LD structured data for CV site
+  function addJsonLd() {
     const jsonLd = {
       "@context": "https://schema.org",
-      "@type": "VideoGame",
-      "name": metadata.gameName,
-      "description": metadata.shortDescription,
-      "genre": metadata.genre,
-      "developer": {
-        "@type": "Organization",
-        "name": metadata.developer
+      "@type": "Person",
+      "name": "Çağrı Dürü",
+      "alternateName": "EdgeTypE",
+      "jobTitle": "Game Designer & Developer",
+      "description": "Game Designer ve Unreal Engine Developer",
+      "birthDate": "2005-03-29",
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Ege Üniversitesi",
+        "department": "Bilgisayar Programcılığı"
       },
-      "publisher": {
-        "@type": "Organization", 
-        "name": metadata.publisher
-      },
-      "datePublished": metadata.releaseDate,
-      "operatingSystem": gameData.platforms?.enabled ? 
-        gameData.platforms.supportedPlatforms.map(p => p.name).join(', ') : 
-        undefined,
-      "applicationCategory": "Game",
-      "offers": {
-        "@type": "Offer",
-        "price": metadata.price?.usd,
-        "priceCurrency": metadata.price?.currency || "USD"
-      }
+      "knowsAbout": [
+        "Game Design",
+        "Unreal Engine",
+        "C#",
+        "C++", 
+        "JavaScript",
+        "Node.js",
+        "Svelte"
+      ],
+      "sameAs": [
+        "https://github.com/edgetype",
+        "https://youtube.com/@edgetype",
+        "https://twitter.com/edgetype"
+      ],
+      "url": window.location.origin
     };
+
+    // Remove existing JSON-LD if present
+    const existingScript = document.querySelector('script[type="application/ld+json"]');
+    if (existingScript) {
+      existingScript.remove();
+    }
 
     const script = document.createElement('script');
     script.type = 'application/ld+json';
@@ -125,11 +150,42 @@
     document.head.appendChild(script);
   }
 
-  // Check if section should be rendered
-  function shouldRender(sectionData) {
-    return sectionData && sectionData.enabled === true;
+  // Navigation handler
+  function handleNavigation(event) {
+    if (event.target.matches('a[href^="/blog"]')) {
+      // Blog navigation - could be handled by SvelteKit router
+      return;
+    }
+  }
+  
+  // Tarih formatlama fonksiyonu
+  function formatDate(date) {
+    return date.toLocaleDateString('tr-TR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
   }
 </script>
+
+<svelte:head>
+  <title>Çağrı Dürü - Game Designer & Developer</title>
+  <meta name="description" content="Çağrı Dürü - Game Designer, Unreal Engine Developer. CV, projeler ve blog yazıları." />
+  <meta name="keywords" content="Game Designer, Unreal Engine, C#, C++, JavaScript, Svelte, EdgeTypE" />
+  <meta name="author" content="Çağrı Dürü" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Çağrı Dürü - Game Designer & Developer" />
+  <meta property="og:description" content="Game Designer ve Developer. Unreal Engine uzmanı." />
+  <meta property="og:type" content="website" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="@edgetype" />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" />
+</svelte:head>
 
 <main class="app">
   {#if loading}
@@ -137,108 +193,121 @@
   {:else if error}
     <div class="error-container">
       <div class="glass-card p-xl text-center">
-        <h2>Failed to Load</h2>
-        <p>Error: {error}</p>
-        <button 
-          class="glass-button mt-md" 
+        <h2>Yükleme Hatası</h2>
+        <p>Hata: {error}</p>
+        <button
+          class="glass-button mt-md"
           on:click={() => window.location.reload()}
         >
-          Retry
+          Tekrar Dene
         </button>
       </div>
     </div>
   {:else}
-    <!-- Hero Section -->
-    {#if shouldRender(gameData.metadata)}
-      <Hero 
-        metadata={gameData.metadata} 
-        storeLinks={gameData.storeLinks}
-        media={gameData.media}
-      />
-    {/if}
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <div class="container">
+        <div class="nav-content">
+          <a href="/" class="nav-logo" on:click|preventDefault={() => router.navigate('/')}>
+            <span class="logo-text gradient-text">ÇD</span>
+          </a>
+          
+          <div class="nav-links">
+            {#if currentRoute === '/'}
+              <a href="#hero" class="nav-link">Ana Sayfa</a>
+              <a href="#projects" class="nav-link">Projeler</a>
+              <a href="#blog" class="nav-link">Blog</a>
+            {:else}
+              <a href="/" class="nav-link" on:click|preventDefault={() => router.navigate('/')}>Ana Sayfa</a>
+              <a href="/blog" class="nav-link" on:click|preventDefault={() => router.navigate('/blog')}>Blog</a>
+            {/if}
+            <a href="https://github.com/edgetype" target="_blank" rel="noopener noreferrer" class="nav-link">
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
 
-    <!-- Game Information -->
-    {#if shouldRender(gameData.metadata)}
-      <GameInfo metadata={gameData.metadata} />
-    {/if}
+    {#if currentRoute === '/'}
+      <!-- Hero Section -->
+      <div id="hero">
+        <CVHero />
+      </div>
 
-    <!-- Features -->
-    {#if shouldRender(gameData.features)}
-      <Features features={gameData.features} />
-    {/if}
+      <!-- Projects Section -->
+      <div id="projects">
+        <Projects />
+      </div>
 
-    <!-- Screenshots -->
-    {#if shouldRender(gameData.media)}
-      <Screenshots media={gameData.media} />
-    {/if}
-
-    <!-- Videos -->
-    {#if shouldRender(gameData.media)}
-      <Videos media={gameData.media} />
-    {/if}
-
-    <!-- System Requirements -->
-    {#if shouldRender(gameData.systemRequirements)}
-      <Requirements requirements={gameData.systemRequirements} />
-    {/if}
-
-    <!-- Reviews & Awards -->
-    {#if shouldRender(gameData.reviews)}
-      <Reviews reviews={gameData.reviews} />
-    {/if}
-
-    <!-- Development Team -->
-    {#if shouldRender(gameData.team)}
-      <Team team={gameData.team} />
-    {/if}
-
-    <!-- Achievements -->
-    {#if shouldRender(gameData.achievements)}
-      <Achievements achievements={gameData.achievements} />
-    {/if}
-
-    <!-- Platforms -->
-    {#if shouldRender(gameData.platforms)}
-      <Platforms platforms={gameData.platforms} />
-    {/if}
-
-    <!-- Languages -->
-    {#if shouldRender(gameData.languages)}
-      <Languages languages={gameData.languages} />
-    {/if}
-
-    <!-- Updates -->
-    {#if shouldRender(gameData.updates)}
-      <Updates updates={gameData.updates} />
-    {/if}
-
-    <!-- Social -->
-    {#if shouldRender(gameData.social)}
-      <Social social={gameData.social} />
-    {/if}
-
-    <!-- Press Kit -->
-    {#if shouldRender(gameData.pressKit)}
-      <PressKit pressKit={gameData.pressKit} />
-    {/if}
-
-    <!-- Store Links -->
-    {#if shouldRender(gameData.storeLinks)}
-      <StoreLinks storeLinks={gameData.storeLinks} />
-    {/if}
-
-    <!-- Comments -->
-    {#if gameData.config?.features?.comments}
-      <!-- <Comments /> -->
-       <!-- DISABLED DUE TO BUG -->
+      <!-- Blog Section -->
+      <div id="blog">
+        <section class="blog-section section">
+          <div class="container">
+            <div class="section-header text-center">
+              <h2 class="gradient-text">Blog</h2>
+              <p>Son yazılarım</p>
+            </div>
+            
+            <div class="posts-grid">
+              {#each blogPosts.slice(0, 3) as post}
+                <article class="post-card glass" on:click|preventDefault={() => router.navigate(`/blog/${post.id}`)}>
+                  <div class="post-image">
+                    <img src={post.image} alt={post.alt} />
+                    <div class="post-date">
+                      {formatDate(post.created)}
+                    </div>
+                  </div>
+                  
+                  <div class="post-content">
+                    <div class="post-tags">
+                      {#each post.tags.slice(0, 2) as tag}
+                        <span class="tag">{tag}</span>
+                      {/each}
+                    </div>
+                    
+                    <h3 class="post-title">{post.title}</h3>
+                    
+                    <p class="post-excerpt">{post.excerpt}</p>
+                    
+                    <div class="post-meta">
+                      <span>Güncelleme: {formatDate(post.updated)}</span>
+                      <span class="read-more">Devamını Oku →</span>
+                    </div>
+                  </div>
+                </article>
+              {/each}
+            </div>
+            
+            <div class="view-all text-center">
+              <button class="glass-button" on:click|preventDefault={() => router.navigate('/blog')}>
+                Tüm Blog Yazılarını Görüntüle
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    {:else if currentRoute === '/blog'}
+      <BlogPage posts={blogPosts} />
+    {:else if currentRoute.startsWith('/blog/') && currentPost}
+      <BlogPostPage post={currentPost} />
+    {:else}
+      <!-- 404 Page -->
+      <div class="error-page">
+        <div class="container">
+          <div class="error-content glass text-center">
+            <h2>Sayfa Bulunamadı</h2>
+            <p>Aradığınız sayfa mevcut değil.</p>
+            <button class="glass-button" on:click={() => router.navigate('/')}>
+              Ana Sayfaya Dön
+            </button>
+          </div>
+        </div>
+      </div>
     {/if}
 
     <!-- Footer -->
-    <Footer
-      metadata={gameData.metadata}
-      social={gameData.social}
-      config={gameData.config}
-    />
+    <Footer />
   {/if}
 </main>
 
@@ -265,6 +334,55 @@
     z-index: -1;
   }
 
+  .main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: var(--spacing-md) 0;
+  }
+
+  .nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-logo {
+    text-decoration: none;
+  }
+
+  .logo-text {
+    font-size: var(--font-size-2xl);
+    font-weight: bold;
+    font-family: var(--font-family-heading);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
+  }
+
+  .nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+  }
+
+  .nav-link:hover {
+    color: var(--primary-color);
+    background: var(--glass-bg);
+  }
+
   .error-container {
     display: flex;
     align-items: center;
@@ -273,17 +391,181 @@
     padding: var(--spacing-md);
   }
 
-  :global(html) {
-    scroll-behavior: smooth;
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
   }
 
-  :global(body) {
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-family-base);
-    background-color: var(--background-color);
+  .glass-button {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm) var(--spacing-lg);
     color: var(--text-primary);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    font-family: inherit;
+    font-size: var(--font-size-base);
+  }
+
+  .glass-button:hover {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  /* Ana sayfa blog section stilleri */
+  #blog .blog-section {
+    padding: var(--spacing-3xl) 0;
+  }
+  
+  #blog .section-header {
+    margin-bottom: var(--spacing-3xl);
+  }
+  
+  #blog .section-header h2 {
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-5xl);
+  }
+  
+  #blog .section-header p {
+    font-size: var(--font-size-xl);
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  #blog .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--spacing-xl);
+  }
+  
+  #blog .post-card {
+    cursor: pointer;
+    overflow: hidden;
+    transition: all var(--transition-normal);
+    height: fit-content;
+  }
+  
+  #blog .post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  #blog .post-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  #blog .post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+  
+  #blog .post-card:hover .post-image img {
+    transform: scale(1.05);
+  }
+  
+  #blog .post-date {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+  }
+  
+  #blog .post-content {
+    padding: var(--spacing-xl);
+  }
+  
+  #blog .post-tags {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+  }
+  
+  #blog .tag {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+  }
+  
+  #blog .post-title {
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-xl);
+    color: var(--text-primary);
+  }
+  
+  #blog .post-excerpt {
+    color: var(--text-secondary);
     line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  #blog .post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+    font-size: var(--font-size-sm);
+  }
+  
+  #blog .post-meta span:first-child {
+    color: var(--text-muted);
+  }
+  
+  #blog .read-more {
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+  
+  #blog .view-all {
+    margin-top: var(--spacing-2xl);
+  }
+  
+  #blog .glass-button {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md) var(--spacing-xl);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    font-family: inherit;
+    font-size: var(--font-size-base);
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  #blog .glass-button:hover {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  /* Ensure sections have proper spacing for fixed nav */
+  :global(.section:first-of-type) {
+    padding-top: calc(var(--spacing-3xl) + 60px);
   }
 
   /* Ensure sections have proper spacing */
@@ -308,13 +590,31 @@
 
   /* Stagger animation delays for sections */
   :global(.section:nth-child(1)) { animation-delay: 0.1s; }
-  :global(.section:nth-child(2)) { animation-delay: 0.2s; }
-  :global(.section:nth-child(3)) { animation-delay: 0.3s; }
-  :global(.section:nth-child(4)) { animation-delay: 0.4s; }
-  :global(.section:nth-child(5)) { animation-delay: 0.5s; }
-  :global(.section:nth-child(6)) { animation-delay: 0.6s; }
-  :global(.section:nth-child(7)) { animation-delay: 0.7s; }
-  :global(.section:nth-child(8)) { animation-delay: 0.8s; }
-  :global(.section:nth-child(9)) { animation-delay: 0.9s; }
-  :global(.section:nth-child(10)) { animation-delay: 1.0s; }
+  :global(.section:nth-child(2)) { animation-delay: 0.3s; }
+  :global(.section:nth-child(3)) { animation-delay: 0.5s; }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .nav-links {
+      gap: var(--spacing-sm);
+    }
+    
+    .nav-link {
+      padding: var(--spacing-xs) var(--spacing-sm);
+      font-size: var(--font-size-sm);
+    }
+
+    .logo-text {
+      font-size: var(--font-size-xl);
+    }
+
+    :global(.section:first-of-type) {
+      padding-top: calc(var(--spacing-2xl) + 60px);
+    }
+  }
+
+  /* Utility classes */
+  :global(.p-xl) { padding: var(--spacing-xl); }
+  :global(.mt-md) { margin-top: var(--spacing-md); }
+  :global(.text-center) { text-align: center; }
 </style>

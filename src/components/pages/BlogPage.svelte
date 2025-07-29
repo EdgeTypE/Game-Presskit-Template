@@ -1,14 +1,37 @@
 <script>
   import { router } from '../../utils/router.js';
+  import { languageManager } from '../../utils/languageManager.js';
   
   export let posts = [];
   
+  let currentLanguage = languageManager.getCurrentLanguage();
+  
+  // Dil değişikliği callback'i
+  languageManager.addLanguageChangeListener((lang) => {
+    currentLanguage = lang;
+  });
+  
+  // Reactive dil değişkeni
+  $: currentLanguage = languageManager.getCurrentLanguage();
+  
   function formatDate(date) {
-    return date.toLocaleDateString('tr-TR', {
+    const options = {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
-    });
+    };
+    
+    // Dil bazlı tarih formatlaması
+    if (currentLanguage === 'tr') {
+      return date.toLocaleDateString('tr-TR', options);
+    } else {
+      return date.toLocaleDateString('en-US', options);
+    }
+  }
+  
+  // Blog yazısını çevir
+  function translatePost(post) {
+    return languageManager.translatePost(post);
   }
   
   function openPost(postId) {
@@ -27,28 +50,41 @@
     <!-- Blog Posts Grid -->
     <div class="posts-grid">
       {#each posts as post}
+        {@const translatedPost = translatePost(post)}
         <article class="post-card glass" on:click|preventDefault={() => openPost(post.id)}>
           <div class="post-image">
-            <img src={post.image} alt={post.alt} />
+            <img src={translatedPost.image} alt={translatedPost.alt} />
             <div class="post-date">
-              {formatDate(post.created)}
+              {formatDate(translatedPost.created)}
             </div>
           </div>
           
           <div class="post-content">
             <div class="post-tags">
-              {#each post.tags as tag}
+              {#each translatedPost.tags as tag}
                 <span class="tag">{tag}</span>
               {/each}
             </div>
             
-            <h3 class="post-title">{post.title}</h3>
+            <h3 class="post-title">{translatedPost.title}</h3>
             
-            <p class="post-excerpt">{post.excerpt}</p>
+            <p class="post-excerpt">{translatedPost.excerpt}</p>
             
             <div class="post-meta">
-              <span>Güncelleme: {formatDate(post.updated)}</span>
-              <span class="read-more">Devamını Oku →</span>
+              <span>
+                {#if currentLanguage === 'tr'}
+                  Güncelleme: {formatDate(translatedPost.updated)}
+                {:else}
+                  Updated: {formatDate(translatedPost.updated)}
+                {/if}
+              </span>
+              <span class="read-more">
+                {#if currentLanguage === 'tr'}
+                  Devamını Oku →
+                {:else}
+                  Read More →
+                {/if}
+              </span>
             </div>
           </div>
         </article>
@@ -176,6 +212,9 @@
     color: var(--primary-color);
     font-weight: 600;
   }
+
+   /* class="blog-image" style="max-width: 100%; height: auto;" */
+
 
   /* Responsive Design */
   @media (max-width: 768px) {

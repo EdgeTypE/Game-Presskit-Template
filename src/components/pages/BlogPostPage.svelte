@@ -1,76 +1,118 @@
 <script>
   import { router } from '../../utils/router.js';
+  import { languageManager } from '../../utils/languageManager.js';
   
   export let post = null;
+  
+  
+  // Dil değişikliği callback'i
+  languageManager.addLanguageChangeListener((lang) => {
+    currentLanguage = lang;
+  });
+  
+  // Reactive dil değişkeni
+  $: currentLanguage = languageManager.getCurrentLanguage();
+  
+  // Blog yazısını çevir
+  function translatePost(post) {
+    return languageManager.translatePost(post);
+  }
   
   function goBack() {
     router.navigate('/blog');
   }
   
   function formatDate(date) {
-    return date.toLocaleDateString('tr-TR', {
+    const options = {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
-    });
+    };
+    
+    // Dil bazlı tarih formatlaması
+    if (currentLanguage === 'tr') {
+      return date.toLocaleDateString('tr-TR', options);
+    } else {
+      return date.toLocaleDateString('en-US', options);
+    }
   }
 </script>
 
 {#if post}
+  {@const translatedPost = translatePost(post)}
   <div class="blog-post-page">
     <div class="container">
       <!-- Blog Post Header -->
       <header class="post-header">
         <button class="back-button glass" on:click|preventDefault={goBack}>
-          ← Blog'a Dön
+          {#if currentLanguage === 'tr'}
+            ← Blog'a Dön
+          {:else}
+            ← Back to Blog
+          {/if}
         </button>
         
-        <h1 class="gradient-text">{post.title}</h1>
+        <h1 class="gradient-text">{translatedPost.title}</h1>
         
         <div class="post-meta-detail">
-          <time datetime={post.created} class="post-date">
-            {formatDate(post.created)}
+          <time datetime={translatedPost.created} class="post-date">
+            {formatDate(translatedPost.created)}
           </time>
           
           <div class="post-tags">
-            {#each post.tags as tag}
+            {#each translatedPost.tags as tag}
               <span class="tag">{tag}</span>
             {/each}
           </div>
         </div>
         
         <div class="featured-image">
-          <img src={post.image} alt={post.alt} />
+          <img src={translatedPost.image} alt={translatedPost.alt} />
         </div>
       </header>
 
       <!-- Blog Post Content -->
       <div class="post-content-detail glass">
-        {@html post.content}
+            {#if currentLanguage === 'tr'}
+                {@html translatedPost['content-tr']}
+            {:else}
+                {@html translatedPost.content}
+            {/if}
+
       </div>
 
       <!-- Blog Post Footer -->
       <footer class="post-footer glass">
         <div class="post-navigation">
           <button class="nav-button" on:click|preventDefault={goBack}>
-            ← Tüm Blog Yazıları
+            {#if currentLanguage === 'tr'}
+              ← Tüm Blog Yazıları
+            {:else}
+              ← All Blog Posts
+            {/if}
           </button>
         </div>
         
         <div class="post-share">
-          <h4>Bu yazıyı paylaş:</h4>
+          <h4>
+            {#if currentLanguage === 'tr'}
+              Bu yazıyı paylaş:
+            {:else}
+              Share this post:
+            {/if}
+          </h4>
           <div class="share-buttons">
-            <a 
-              href="https://twitter.com/intent/tweet?text={encodeURIComponent(post.title)}&url={encodeURIComponent(window.location.href)}" 
-              target="_blank" 
+            <a
+              href="https://twitter.com/intent/tweet?text={encodeURIComponent(translatedPost.title)}&url={encodeURIComponent(window.location.href)}"
+              target="_blank"
               rel="noopener noreferrer"
               class="share-button twitter"
             >
               🐦 Twitter
             </a>
-            <a 
-              href="https://www.linkedin.com/sharing/share-offsite/?url={encodeURIComponent(window.location.href)}" 
-              target="_blank" 
+            <a
+              href="https://www.linkedin.com/sharing/share-offsite/?url={encodeURIComponent(window.location.href)}"
+              target="_blank"
               rel="noopener noreferrer"
               class="share-button linkedin"
             >
@@ -85,10 +127,26 @@
   <div class="error-page">
     <div class="container">
       <div class="error-content glass text-center">
-        <h2>Blog yazısı bulunamadı</h2>
-        <p>Aradığınız blog yazısı mevcut değil.</p>
+        <h2>
+          {#if currentLanguage === 'tr'}
+            Blog yazısı bulunamadı
+          {:else}
+            Blog post not found
+          {/if}
+        </h2>
+        <p>
+          {#if currentLanguage === 'tr'}
+            Aradığınız blog yazısı mevcut değil.
+          {:else}
+            The blog post you are looking for does not exist.
+          {/if}
+        </p>
         <button class="glass-button" on:click|preventDefault={goBack}>
-          Blog'a Dön
+          {#if currentLanguage === 'tr'}
+            Blog'a Dön
+          {:else}
+            Back to Blog
+          {/if}
         </button>
       </div>
     </div>
@@ -388,4 +446,5 @@
       flex-direction: column;
     }
   }
+
 </style>

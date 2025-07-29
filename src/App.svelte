@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { router } from './utils/router.js';
   import { blogPosts } from './data/blogPosts.js';
+  import { languageManager } from './utils/languageManager.js';
   
   // CV Components
   import CVHero from './components/sections/CVHero.svelte';
@@ -16,6 +17,9 @@
   let error = null;
   let currentRoute = '/';
   let currentPost = null;
+  let currentLanguage = languageManager.getCurrentLanguage();
+
+  // let cs16 = false;
 
   // Initialize app
   onMount(async () => {
@@ -27,6 +31,9 @@
       router.onRouteChange = handleRouteChange;
       handleRouteChange(router.getCurrentRoute());
       
+      // Dil değişikliği callback'i
+      languageManager.addLanguageChangeListener(handleLanguageChange);
+      
       loading = false;
     } catch (err) {
       console.error('Failed to initialize app:', err);
@@ -34,6 +41,19 @@
       loading = false;
     }
   });
+  
+  // Reactive dil değişkeni
+  $: currentLanguage = languageManager.getCurrentLanguage();
+
+  // Blog postlarını seçili dile göre reaktif çevir
+  $: translatedBlogPosts = blogPosts.map(translatePost);
+
+  // Dil değişikliği işleme
+  function handleLanguageChange(lang) {
+    currentLanguage = lang;
+    // Sayfa meta verilerini güncelle
+    updatePageMeta();
+  }
 
   // Route değişikliği işleme
   function handleRouteChange(path) {
@@ -158,13 +178,25 @@
     }
   }
   
+  // Blog yazısını çevir
+  function translatePost(post) {
+    return languageManager.translatePost(post);
+  }
+  
   // Tarih formatlama fonksiyonu
   function formatDate(date) {
-    return date.toLocaleDateString('tr-TR', {
+    const options = {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
-    });
+    };
+    
+    // Dil bazlı tarih formatlaması
+    if (currentLanguage === 'tr') {
+      return date.toLocaleDateString('tr-TR', options);
+    } else {
+      return date.toLocaleDateString('en-US', options);
+    }
   }
 </script>
 
@@ -212,8 +244,9 @@
             <span class="logo-text gradient-text">ÇD</span>
           </a>
           
-          <div class="nav-links">
-            {#if currentRoute === '/'}
+          <div class="nav-links">            
+            {#if currentLanguage === 'tr'}
+                          {#if currentRoute === '/'}
               <a href="#hero" class="nav-link">Ana Sayfa</a>
               <a href="#projects" class="nav-link">Projeler</a>
               <a href="#blog" class="nav-link">Blog</a>
@@ -224,6 +257,32 @@
             <a href="https://github.com/edgetype" target="_blank" rel="noopener noreferrer" class="nav-link">
               GitHub
             </a>
+            {:else}
+                          {#if currentRoute === '/'}
+              <a href="#hero" class="nav-link">Home</a>
+              <a href="#projects" class="nav-link">Projects</a>
+              <a href="#blog" class="nav-link">Blog</a>
+            {:else}
+              <a href="/" class="nav-link" on:click|preventDefault={() => router.navigate('/')}>Home</a>
+              <a href="/blog" class="nav-link" on:click|preventDefault={() => router.navigate('/blog')}>Blog</a>
+            {/if}
+            <a href="https://github.com/edgetype" target="_blank" rel="noopener noreferrer" class="nav-link">
+              GitHub
+            </a>
+            {/if}
+
+            
+            <!-- Dil Seçimi Dropdown -->
+            <div class="language-selector">
+              <select
+                class="language-select"
+                value={currentLanguage}
+                on:change={(e) => languageManager.setLanguage(e.target.value)}
+              >
+                <option value="en">English</option>
+                <option value="tr">Türkçe</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
@@ -245,34 +304,58 @@
         <section class="blog-section section">
           <div class="container">
             <div class="section-header text-center">
-              <h2 class="gradient-text">Blog</h2>
-              <p>Son yazılarım</p>
+              <h2 class="gradient-text">
+                {#if currentLanguage === 'tr'}
+                  Blog
+                {:else}
+                  Blog
+                {/if}
+              </h2>
+              <p>
+                {#if currentLanguage === 'tr'}
+                  Son yazılarım
+                {:else}
+                  My latest posts
+                {/if}
+              </p>
             </div>
             
             <div class="posts-grid">
-              {#each blogPosts.slice(0, 3) as post}
-                <article class="post-card glass" on:click|preventDefault={() => router.navigate(`/blog/${post.id}`)}>
+              {#each translatedBlogPosts.slice(0, 3) as translatedPost}
+                <article class="post-card glass" on:click|preventDefault={() => router.navigate(`/blog/${translatedPost.id}`)}>
                   <div class="post-image">
-                    <img src={post.image} alt={post.alt} />
+                    <img src={translatedPost.image} alt={translatedPost.alt} />
                     <div class="post-date">
-                      {formatDate(post.created)}
+                      {formatDate(translatedPost.created)}
                     </div>
                   </div>
                   
                   <div class="post-content">
                     <div class="post-tags">
-                      {#each post.tags.slice(0, 2) as tag}
+                      {#each translatedPost.tags.slice(0, 2) as tag}
                         <span class="tag">{tag}</span>
                       {/each}
                     </div>
                     
-                    <h3 class="post-title">{post.title}</h3>
+                    <h3 class="post-title">{translatedPost.title}</h3>
                     
-                    <p class="post-excerpt">{post.excerpt}</p>
+                    <p class="post-excerpt">{translatedPost.excerpt}</p>
                     
                     <div class="post-meta">
-                      <span>Güncelleme: {formatDate(post.updated)}</span>
-                      <span class="read-more">Devamını Oku →</span>
+                      <span>
+                        {#if currentLanguage === 'tr'}
+                          Güncelleme: {formatDate(translatedPost.updated)}
+                        {:else}
+                          Updated: {formatDate(translatedPost.updated)}
+                        {/if}
+                      </span>
+                      <span class="read-more">
+                        {#if currentLanguage === 'tr'}
+                          Devamını Oku →
+                        {:else}
+                          Read More →
+                        {/if}
+                      </span>
                     </div>
                   </div>
                 </article>
@@ -281,7 +364,11 @@
             
             <div class="view-all text-center">
               <button class="glass-button" on:click|preventDefault={() => router.navigate('/blog')}>
-                Tüm Blog Yazılarını Görüntüle
+                {#if currentLanguage === 'tr'}
+                  Tüm Blog Yazılarını Görüntüle
+                {:else}
+                  View All Blog Posts
+                {/if}
               </button>
             </div>
           </div>
@@ -308,7 +395,10 @@
 
     <!-- Footer -->
     <Footer />
+
+
   {/if}
+  
 </main>
 
 <style>
@@ -561,6 +651,34 @@
     color: white;
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
+  }
+  
+  /* Dil seçimi stilleri */
+  .language-selector {
+    position: relative;
+  }
+  
+  .language-select {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .language-select:hover {
+    background: var(--surface-color);
+    transform: translateY(-1px);
+  }
+  
+  .language-select:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
   }
   
   /* Ensure sections have proper spacing for fixed nav */

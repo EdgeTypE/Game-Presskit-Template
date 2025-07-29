@@ -1,10 +1,20 @@
 <script>
   import { onMount } from 'svelte';
+  import { languageManager } from '../../utils/languageManager.js';
 
   // Dinamik yaş hesaplama
   const birthDate = new Date('2005-03-29');
   let age = 0;
   let totalHoursWasted = 175310;
+  let currentLanguage = languageManager.getCurrentLanguage();
+
+  // Dil değişikliği callback'i
+  languageManager.addLanguageChangeListener((lang) => {
+    currentLanguage = lang;
+  });
+  
+  // Reactive dil değişkeni
+  $: currentLanguage = languageManager.getCurrentLanguage();
 
   onMount(() => {
     const today = new Date();
@@ -15,27 +25,119 @@
     }
 
     // Her yıl total_hours_wasted_here'ı güncelle
-    const yearsPassed = age - 19; // 2024'te 19 yaşında olduğu varsayılarak
-    totalHoursWasted = 175310 + yearsPassed;
+    // 29 Mart 2005 15:00'dan bugüne kadar geçen saat sayısını hesapla
+    totalHoursWasted = Math.floor((today - new Date('2005-03-29T15:00:00')) / 1000 / 60 / 60);
   });
 
   const socialLinks = [
     { name: 'GitHub', url: 'https://github.com/edgetype', icon: '🐙' },
     { name: 'YouTube', url: 'https://youtube.com/@edgetype', icon: '📺' },
     { name: 'Twitter', url: 'https://twitter.com/edgetype', icon: '🐦' },
-    { name: 'Xbox', url: 'https://xbox.com/edgetype', icon: '🎮' },
-    { name: 'Discord', url: 'https://discord.com/users/edgetype', icon: '💬' }
+    { name: 'Steam', url: 'https://steamcommunity.com/id/EdgeTypE', icon: '🎮' },
+    { name: 'Discord', url: 'https://discord.gg/kjFPznJQBq', icon: '💬' }
   ];
+
+let cs16 = false;
 
   const skills = [
     'Game Design',
     'Unreal Engine 4/5',
     'C#',
-    'C++',
+    // 'C++',
+    'Python',
     'JavaScript',
+    'SQL',
     'Node.js',
     'Svelte'
   ];
+  
+  // Çeviri fonksiyonu
+  $: t = (key) => {
+    const translations = {
+      'hero-subtitle': {
+        'en': 'Game Designer & Developer',
+        'tr': 'Game Designer & Developer'
+      },
+      'hero-nickname': {
+        'en': 'EdgeTypE',
+        'tr': 'EdgeTypE'
+      },
+      'detail-label-age': {
+        'en': 'Age:',
+        'tr': 'Yaş:'
+      },
+      'detail-label-education': {
+        'en': 'Education:',
+        'tr': 'Eğitim:'
+      },
+      'detail-label-expertise': {
+        'en': 'Expertise:',
+        'tr': 'Uzmanlık:'
+      },
+      'education-value': {
+        'en': 'Ege University - Computer Programming',
+        'tr': 'Ege Üniversitesi - Bilgisayar Programcılığı'
+      },
+      'expertise-value': {
+        'en': 'Game Design, Unreal Engine',
+        'tr': 'Game Design, Unreal Engine'
+      },
+      'skills-title': {
+        'en': 'Skills',
+        'tr': 'Yetenekler'
+      },
+      'code-comment-line1': {
+        'en': '// Dear programmer:',
+        'tr': '// Dear programmer:'
+      },
+      'code-comment-line2': {
+        'en': '// When I wrote this code, only god and',
+        'tr': '// When I wrote this code, only god and'
+      },
+      'code-comment-line3': {
+        'en': '// I knew how it worked.',
+        'tr': '// I knew how it worked.'
+      },
+      'code-comment-line4': {
+        'en': '// Now, only god knows it!',
+        'tr': '// Now, only god knows it!'
+      },
+      'code-comment-line5': {
+        'en': '//',
+        'tr': '//'
+      },
+      'code-comment-line6': {
+        'en': '// Therefore, if you are trying to optimize',
+        'tr': '// Therefore, if you are trying to optimize'
+      },
+      'code-comment-line7': {
+        'en': '// this routine and it fails (most surely),',
+        'tr': '// this routine and it fails (most surely),'
+      },
+      'code-comment-line8': {
+        'en': '// please increase this counter as a',
+        'tr': '// please increase this counter as a'
+      },
+      'code-comment-line9': {
+        'en': '// warning for the next person:',
+        'tr': '// warning for the next person:'
+      },
+      'code-comment-line10': {
+        'en': '//',
+        'tr': '//'
+      },
+      'code-comment-line11': {
+        'en': '// total_hours_wasted_here = ',
+        'tr': '// total_hours_wasted_here = '
+      }
+    };
+    
+    if (translations[key] && translations[key][currentLanguage]) {
+      return translations[key][currentLanguage];
+    }
+    
+    return key;
+  }
 </script>
 
 <section class="hero-section section">
@@ -51,21 +153,21 @@
         
         <div class="hero-info">
           <h1 class="gradient-text">Çağrı Dürü</h1>
-          <p class="hero-subtitle">Game Designer & Developer</p>
-          <p class="hero-nickname">EdgeTypE</p>
+          <p class="hero-subtitle">{t('hero-subtitle')}</p>
+          <p class="hero-nickname">{t('hero-nickname')}</p>
           
           <div class="hero-details">
             <div class="detail-item">
-              <span class="detail-label">Yaş:</span>
+              <span class="detail-label">{t('detail-label-age')}</span>
               <span class="detail-value">{age}</span>
             </div>
             <div class="detail-item">
-              <span class="detail-label">Eğitim:</span>
-              <span class="detail-value">Ege Üniversitesi - Bilgisayar Programcılığı</span>
+              <span class="detail-label">{t('detail-label-education')}</span>
+              <span class="detail-value">{t('education-value')}</span>
             </div>
             <div class="detail-item">
-              <span class="detail-label">Uzmanlik:</span>
-              <span class="detail-value">Game Design, Unreal Engine</span>
+              <span class="detail-label">{t('detail-label-expertise')}</span>
+              <span class="detail-value">{t('expertise-value')}</span>
             </div>
           </div>
 
@@ -84,33 +186,40 @@
       <!-- Kod Yorumu -->
       <div class="code-comment glass">
         <pre class="code-text">
-// Dear programmer:
-// When I wrote this code, only god and
-// I knew how it worked.
-// Now, only god knows it!
-//
-// Therefore, if you are trying to optimize
-// this routine and it fails (most surely),
-// please increase this counter as a
-// warning for the next person:
-//
-// total_hours_wasted_here = {totalHoursWasted}
+{t('code-comment-line1')}
+{t('code-comment-line2')}
+{t('code-comment-line3')}
+{t('code-comment-line4')}
+{t('code-comment-line5')}
+{t('code-comment-line6')}
+{t('code-comment-line7')}
+{t('code-comment-line8')}
+{t('code-comment-line9')}
+{t('code-comment-line10')}
+{t('code-comment-line11')}{totalHoursWasted}
         </pre>
       </div>
 
       <!-- Yetenekler -->
       <div class="skills-section glass">
-        <h3>Yetenekler</h3>
+        <h3>{t('skills-title')}</h3>
         <div class="skills-grid">
-          {#each skills as skill}
-            <div class="skill-tag">
+            {#each skills as skill}
+            <div
+              class="skill-tag"
+              on:mouseenter={() => { if (skill === "Game Design") cs16 = true; }}
+              on:mouseleave={() => { if (skill === "Game Design") cs16 = false; }}
+            >
               {skill}
             </div>
-          {/each}
+            {/each}
         </div>
       </div>
     </div>
   </div>
+  {#if cs16}
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/ekmas/cs16.css@main/css/cs16.min.css">
+  {/if}
 </section>
 
 <style>

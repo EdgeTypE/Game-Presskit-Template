@@ -9,7 +9,7 @@ Ege Üniversitesi**
 Ege Meslek Yüksekokulu, Bilgisayar Programcılığı (4 üzerinden 3.63) Eylül 2023 –
 (^) **Deneyim
 Goygoy Engine
-Geliştirici** Nisan 2024 –
+Geliştirici** Nisan 2025 –
 
 - Node.js ve Svelte kullanarak goygoyengine.com adında, oyun ve teknoloji haberlerine odaklanan, kullanıcı
     dostu ve mobil uyumlu bir platform geliştirdim. Platformu zenginleştirmek için ayrıca Steam ve Xbox gibi oyun

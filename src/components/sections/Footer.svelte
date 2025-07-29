@@ -1,96 +1,72 @@
 <script>
-  import { onMount } from 'svelte';
-  import { languageManager } from '../../utils/languageManager.js';
+  import { t } from '../../i18n/index.js';
   
-  let currentLanguage = languageManager.getCurrentLanguage();
-  let currentYear = new Date().getFullYear();
+  export let metadata = {};
+  export let social = {};
+  export let config = {};
   
-  // Dil değişikliği callback'i
-  languageManager.addLanguageChangeListener((lang) => {
-    currentLanguage = lang;
-  });
-  
-  // Reactive dil değişkeni
-  $: currentLanguage = languageManager.getCurrentLanguage();
-  
-  // Sosyal medya bağlantıları
-  const socialLinks = [
-    { name: 'GitHub', url: 'https://github.com/edgetype', icon: '🐙' },
-    { name: 'YouTube', url: 'https://youtube.com/@edgetype', icon: '📺' },
-    { name: 'Twitter', url: 'https://twitter.com/edgetype', icon: '🐦' },
-    { name: 'Steam', url: 'https://steamcommunity.com/id/EdgeTypE/', icon: '🎮' },
-    // { name: 'Discord', url: 'https://discord.com/users/edgetype', icon: '💬' }
-  ];
-  
-  // Çeviri fonksiyonu
-  function t(key) {
-    const translations = {
-      'footer-title': {
-        'en': 'Çağrı Dürü',
-        'tr': 'Çağrı Dürü'
-      },
-      'footer-subtitle': {
-        'en': 'Game Designer & Developer',
-        'tr': 'Game Designer & Developer'
-      },
-      'footer-follow': {
-        'en': 'Follow Me',
-        'tr': 'Beni Takip Et'
-      },
-      'footer-rights': {
-        'en': 'All rights reserved',
-        'tr': 'Tüm hakları saklıdır'
-      },
-      'footer-made': {
-        'en': 'Made with',
-        'tr': 'yaptım şunun ilen:'
-      }
-    };
-    
-    if (translations[key] && translations[key][currentLanguage]) {
-      return translations[key][currentLanguage];
-    }
-    
-    return key;
-  }
+  const currentYear = new Date().getFullYear();
 </script>
 
 <footer class="footer">
   <div class="container">
     <div class="footer-content">
-      <!-- Personal Info -->
+      <!-- Game Info -->
       <div class="footer-section">
-        <h3>{t('footer-title')}</h3>
-        <p>{t('footer-subtitle')}</p>
-        <p class="copyright">© {currentYear} Çağrı Dürü.</p>
-                <!-- <p class="copyright">© {currentYear} Çağrı Dürü. {t('footer-rights')}.</p> -->
-
+        <h3>{metadata.gameName || 'Game Name'}</h3>
+        <p>{metadata.shortDescription}</p>
+        {#if metadata.website}
+          <a href={metadata.website} target="_blank" rel="noopener" class="link-underline">
+            Official Website
+          </a>
+        {/if}
       </div>
       
       <!-- Social Links -->
-      <div class="footer-section">
-        <h4>{t('footer-follow')}</h4>
-        <div class="social-grid">
-          {#each socialLinks as link}
-            <a
-              href={link.url}
-              target="_blank"
-              rel="noopener"
-              class="social-link hover-lift"
-              title={link.name}
-            >
-              <span class="social-icon">{link.icon}</span>
-              <span class="social-name">{link.name}</span>
-            </a>
-          {/each}
+      {#if social?.socialLinks}
+        <div class="footer-section">
+          <h4>Follow Us</h4>
+          <div class="social-grid">
+            {#each social.socialLinks.slice(0, 6) as link}
+              <a 
+                href={link.url} 
+                target="_blank" 
+                rel="noopener"
+                class="social-link hover-lift"
+                title={link.platform}
+              >
+                {#if link.icon}
+                  <img src={link.icon} alt={link.platform} />
+                {:else}
+                  <span>{link.platform}</span>
+                {/if}
+              </a>
+            {/each}
+          </div>
         </div>
+      {/if}
+      
+      <!-- Developer Info -->
+      <div class="footer-section">
+        <h4>Developer</h4>
+        <p>{metadata.developer}</p>
+        {#if metadata.publisher && metadata.publisher !== metadata.developer}
+          <p><strong>Publisher:</strong> {metadata.publisher}</p>
+        {/if}
+        <p class="copyright">© {currentYear} {metadata.developer}. All rights reserved.</p>
       </div>
     </div>
     
     <!-- Bottom Bar -->
     <div class="footer-bottom">
+      <div class="footer-links">
+        <a href="#privacy" class="footer-link">Privacy Policy</a>
+        <a href="#terms" class="footer-link">Terms of Service</a>
+        <a href="#contact" class="footer-link">Contact</a>
+      </div>
+      
       <div class="footer-credits">
-        <p>{t('footer-made')} <a href="https://svelte.dev" target="_blank" rel="noopener">Svelte</a></p>
+        <p>Made with <a href="https://svelte.dev" target="_blank" rel="noopener">Svelte</a></p>
       </div>
     </div>
   </div>
@@ -211,11 +187,7 @@
   .footer-credits a:hover {
     text-decoration: underline;
   }
-  
-  .social-name {
-    display: none;
-  }
-  
+
   @media (max-width: 768px) {
     .footer-content {
       grid-template-columns: 1fr;
